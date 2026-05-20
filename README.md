@@ -1,13 +1,34 @@
-## GoHotel: Sistema de Reservas
+# GoHotel: Sistema de Reservas
 
-Este é um projeto acadêmico proposto na integração das disciplinas do
+Este é um projeto acadêmico proposto como integração das disciplinas do
 curso técnico de Desenvolvimento de Sistemas do IFAL, com o objetivo de aplicar
-os conhecimentos obtidos no curso na produção de um sistema utilizável.
+os conhecimentos adquiridos durante o curso na construção de um sistema utilizável.
 
-Desenvolveremos um sistema para reservas em hotéis que conrtará com
-cadastro e log-in, otimização com cookies e CRUD completo de usuários, reservas e hotéis.
+O projeto consiste em um sistema de reservas para hotéis, que contará com:
 
-Para o desenvoilvimento da aplicação, utilizaremos HTML, CSS e JavaScript vanilla.
+- Cadastro e login de usuários
+- Autenticação com criptografia de senhas
+- Persistência de sessão utilizando cookies
+- CRUD completo de usuários, reservas e hotéis
+
+## Tecnologias Utilizadas
+
+Para o desenvolvimento da aplicação, serão utilizadas as seguintes tecnologias:
+
+- HTML
+- CSS Vanilla
+- JavaScript
+- Node.js
+- Express
+- SQLite
+
+## Bibliotecas e Serviços
+
+O sistema contará com:
+
+- Criptografia de senhas utilizando **bcrypt**
+- Implementação de **CORS**
+- Utilização do **Nodemon** para desenvolvimento
 
 ## Autores
 
