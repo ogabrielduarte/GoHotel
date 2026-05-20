@@ -5,12 +5,12 @@ export class Reserva {
     #idUsuario;
     #idHotel;
 
-    constructor({ id = null, dataEntrada, dataSaida, idUsuario, idHotel }) {
-        this.setId(id);
-        this.setDataEntrada(dataEntrada);
-        this.setDataSaida(dataSaida);
-        this.setIdUsuario(idUsuario);
-        this.setIdHotel(idHotel);
+    constructor(id, dataEntrada, dataSaida, idUsuario, idHotel) {
+        this.#id = null;
+        setDataEntrada(dataEntrada);
+        setDataSaida(dataSaida);
+        setIdUsuario(idUsuario);
+        setIdHotel(idHotel);
     }
 
     // GET-SET ID
@@ -19,12 +19,8 @@ export class Reserva {
     }
 
     setId(id) {
-        if (!id && id !== null) {
-            throw new Error('O campo id não pode estar vazio');
-        }
-
         if (id !== null && typeof id !== 'number') {
-            throw new Error('O campo id deve ser numérico');
+            throw new Error('ID inválido');
         }
 
         this.#id = id;
@@ -35,22 +31,20 @@ export class Reserva {
         return this.#dataEntrada;
     }
 
-    setDataEntrada(dataEntrada) {
-        if (!dataEntrada) {
-            throw new Error('O campo dataEntrada não pode estar vazio');
+    setDataEntrada(data) {
+        if (!data) {
+            throw new Error('O campo data de entrada não pode estar vazio');
         }
 
-        if (typeof dataEntrada !== 'string') {
-            throw new Error('O campo dataEntrada deve ser um texto');
+        if (typeof data !== 'string') {
+            throw new Error('Data inválida')
         }
 
         let regexData = /^\d{2}\/\d{2}\/\d{4}$/;
-        
-        if (!regexData.test(dataEntrada)) {
-            throw new Error('A data de entrada deve estar no formato dd/mm/aaaa');
-        }
 
-        this.#dataEntrada = dataEntrada;
+        if (!regexData.test(data)) {
+            throw new Error('Formato de data inválido')
+        }
     }
 
     // GET-SET DATA_SAIDA
@@ -58,20 +52,20 @@ export class Reserva {
         return this.#dataSaida;
     }
 
-    setDataSaida(dataSaida) {
-        if (!dataSaida) {
-            throw new Error('O campo dataSaida não pode estar vazio');
+    setDataSaida(data) {
+        if (!data) {
+            throw new Error('O campo data de saída não pode estar vazio');
         }
 
-        if (typeof dataSaida !== 'string') {
-            throw new Error('O campo dataSaida deve ser um texto');
+        if (typeof data !== 'string') {
+            throw new Error('Data inválida')
         }
 
-        if (!regexData.test(dataSaida)) {
-            throw new Error('A data de saída deve estar no formato dd/mm/aaaa');
-        }
+        let regexData = /^\d{2}\/\d{2}\/\d{4}$/;
 
-        this.#dataSaida = dataSaida;
+        if (!regexData.test(data)) {
+            throw new Error('Formato de data inválido')
+        }
     }
 
     // GET-SET ID_USUARIO
@@ -80,12 +74,8 @@ export class Reserva {
     }
 
     setIdUsuario(idUsuario) {
-        if (!idUsuario) {
-            throw new Error('O campo idUsuario não pode estar vazio');
-        }
-
-        if (typeof idUsuario !== 'number') {
-            throw new Error('O campo idUsuario deve ser numérico');
+        if (idUsuario !== null && typeof idUsuario !== 'number') {
+            throw new Error('ID_USUARIO inválido');
         }
 
         this.#idUsuario = idUsuario;
@@ -97,12 +87,8 @@ export class Reserva {
     }
 
     setIdHotel(idHotel) {
-        if (!idHotel) {
-            throw new Error('O campo idHotel não pode estar vazio');
-        }
-
-        if (typeof idHotel !== 'number') {
-            throw new Error('O campo idHotel deve ser numérico');
+        if (idHotel !== null && typeof idHotel !== 'number') {
+            throw new Error('ID_HOTEL inválido');
         }
 
         this.#idHotel = idHotel;
