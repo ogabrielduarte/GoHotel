@@ -1,42 +1,42 @@
-const sqlite = require('sqlite3');
-const db = new sqlite.Database('./gohotel_db.db');
+import sqlite3 from 'sqlite3';
+const db = new sqlite3.Database('./gohotel_db.db');
 
 function criarTabelas() {
     try {
         db.serialize(() => {
             db.run(`
-            CREATE TABLE usuarios (
-                id INTEGER PRIMARY KEY,
-                nome TEXT(50) NOT NULL,
-                email TEXT NOT NULL,
-                senha TEXT NOT NULL,
-                telefone TEXT
+            CREATE TABLE IF NOT EXISTS usuarios (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                nome TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
+                senha TEXT NOT NULL
             );
             `)
 
             db.run(`
-                CREATE TABLE telefones_usuarios (
-                    id_usuario INTEGER,
-                    telefone TEXT,
+                CREATE TABLE IF NOT EXISTS telefones_usuarios (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,    
+                    id_usuario INTEGER NOT NULL,
+                    telefone TEXT not null,
 
                     FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
                 );
                 `)
 
             db.run(`
-                CREATE TABLE hoteis (
-                    id INTEGER PRIMARY KEY,
-                    CNPJ INTEGER(14) UNIQUE NOT NULL,
-                    FANTASIA TEXT(50) NOT NULL,
-                    LOCALIZACAO,
+                CREATE TABLE IF NOT EXISTS hoteis (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    cnpj INTEGER UNIQUE NOT NULL,
+                    fantasia TEXT NOT NULL,
+                    localizacao TEXT,
                     QTD_QUARTOS INTEGER NOT NULL
                 );
                 `)
 
             db.run(`
-                CREATE TABLE reserva (
-                    id INTEGER,
-                    data_entrada TEXT ,
+                CREATE TABLE IF NOT EXISTS reserva (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    data_entrada TEXT,
                     data_saida TEXT,
                     id_usuario INTEGER,
                     id_hotel INTEGER,
