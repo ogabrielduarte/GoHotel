@@ -3,7 +3,7 @@ import sqlite3 from 'sqlite3';
 export class UsuarioDAO {
 
     iniciar() {
-        return new sqlite3.Database('./gohotel_db.db');
+        return new sqlite3.Database('./database/gohotel_db.db');
     }
 
     cadastrar(usuario) {
