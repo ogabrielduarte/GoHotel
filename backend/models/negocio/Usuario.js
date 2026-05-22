@@ -6,12 +6,11 @@ export class Usuario {
     #email;
     #senha;
 
-    constructor(nome, email, senha, telefone) {
-        this.#id = null;
+    constructor({id = null, nome, email, senha, telefone }) {
+        this.#id = id;
         this.setNome(nome);
         this.setEmail(email);
         this.setSenha(senha);
-        this.setTelefone(telefone);
     }
 
     // GET-SET ID
