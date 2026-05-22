@@ -5,7 +5,6 @@ export class Usuario {
     #nome;
     #email;
     #senha;
-    #telefone;
 
     constructor(nome, email, senha, telefone) {
         this.#id = null;
@@ -95,28 +94,5 @@ export class Usuario {
         let senhaHash = bcrypt.hashSync(senha, 10)
 
         this.#senha = senhaHash;
-    }
-
-    // GET-SET TELEFONE
-    getTelefone() {
-        return this.#telefone;
-    }
-
-    setTelefone(telefone) {
-        if (!telefone) {
-            throw new Error('O campo telefone não pode estar vazio');
-        }
-
-        if (typeof telefone !== 'string') {
-            throw new Error('Telefone inválido');
-        }
-
-        let regexTelefone = /^55\d{11}$/;
-
-        if (!regexTelefone.test(telefone)) {
-            throw new Error('Telefone brasileiro inválido');
-        }
-
-        this.#telefone = telefone;
     }
 }
