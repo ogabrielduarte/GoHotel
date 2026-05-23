@@ -1,29 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Gabriel S. Duarte, Agatha Marinho Santos">
     <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css"> <!--faltava 1 "." nos 2 href-->
-    <title>Log-In GoHotel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Cadastre</title>
 </head>
-    
+
 <body>
-    <div id="fundo" class="BG">
-        <div class="login"> <!--caixa de login, ainda vou alterar mas deixar assim por enquanto-->
-            <div id="text-login" class="font-dark"><b>Sing in</b></div>
-            <div class="input-login"> <!--precisa transformar em forms-->
-                <label for="email" class="font-dark"><b>email:</b></label>
-                <input id="email" type="email" placeholder="exemplo@gmail.com"></input>
-                <br>
-                <label for="senha" class="font-dark"><b>senha:</b></label>
-                <input id="senha" type="password" placeholder="*******"></input>
-                <button id="login-bt" class="font-dark"><b>login</b></button>
-            </div>
+    <div class="sideLogIn">
+
+        <div class="bemvindo">
+            <img src="../assets/images/GHLOGO.png" width="300" height="300">
+            <h5>Bem-Vindo!</h5>
         </div>
+
+
+        <div id="bordao">
+            <h1 class="titulo">GoHotel</h1>
+            <p class="subtitulo">Reserva sem complicação</p>
+        </div>
+
+        <footer class="copy">
+            <p class="copy">© 2026 GoHotel. All rights reserved</p>
+        </footer>
     </div>
+
+    <div class="login">
+        <h1><b>Log-In</b></h1>
+
+        <form action="http://localhost:3000/usuarios" method="post">
+            <label for="nome">Nome Completo</label>
+            <input type="text" name="nome" class="campoLogIn">
+
+            <label for="email">E-Mail</label>
+            <input type="email" name="email" class="campoLogIn">
+
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" class="campoLogIn">
+
+            <button type="submit" class="subCadastro">
+                Enviar
+            </button>
+        </form>
+
+    </div>
+
 </body>
-    
-</html>
+
+</html
