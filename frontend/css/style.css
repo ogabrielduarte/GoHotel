@@ -14,7 +14,6 @@ div.sideLogIn {
     color: rgb(221, 243, 243);
     font-family: Poppins;
     font-size: xx-large;
-    background: #1A465B;
     background: linear-gradient(142deg,
             rgba(26, 70, 91, 1) 15%,
             rgba(29, 91, 120, 1) 35%,
@@ -40,6 +39,7 @@ div.bemvindo {
 
 h5 {
     margin: 0;
+    margin-top: 1vh;
 }
 
 footer.copy {
@@ -101,12 +101,21 @@ input.campoLogIn {
     font-size: 1.5rem;
     border-radius: 1rem;
     border: solid rgb(231, 248, 248) 3px;
-    width: 500px;
-    height: 50px;
+    width: 32vw;
+    height: 7vh;
+    font-size: 2.7vh;
+    position: relative
+}
+
+.fa-eye {
+    position: absolute;
+    margin-top: 49.5vh;
+    margin-left: 30vw;
+    color: rgb(14, 108, 108)
 }
 
 label {
-    margin-top: 40px;
+    margin-top: 5.2vh;
 }
 
 button.subCadastro {
@@ -126,10 +135,6 @@ button.subCadastro {
 }
 
 button.subCadastro:hover {
-    background: linear-gradient(142deg,
-            rgba(26, 70, 91, 1) 15%,
-            rgba(29, 91, 120, 1) 35%,
-            rgba(6, 148, 148, 1) 100%);
     opacity: 0.87;
     color: rgb(255, 255, 255);
     font-size: 1.5rem;
@@ -138,4 +143,23 @@ button.subCadastro:hover {
     width: 500px;
     height: 50px;
     margin-top: 40px;
+}
+
+/* foco no index */
+
+.header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    background: linear-gradient(100deg,
+            rgba(29, 91, 120, 1),
+            rgba(6, 148, 148, 1),
+            rgba(83, 229, 237, 1) 70%,
+            rgba(6, 148, 148, 1) 95%,
+            rgba(29, 91, 120, 1));
+    width: 100%;
+}
+
+.redirect {
+    font-family: Poppins;
 }
