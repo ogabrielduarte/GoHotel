@@ -6,6 +6,7 @@
     <meta name="author" content="Gabriel S. Duarte, Agatha Marinho Santos">
     <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"> <!-- link pra pegar a imagem do olho na senha-->
     <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <title>Cadastre</title>
@@ -15,7 +16,9 @@
     <div class="sideLogIn">
 
         <div class="bemvindo">
-            <img src="../assets/images/GHLOGO.png" width="300" height="300">
+            <a href="../index.html" style="display:contents">
+                <img src="../assets/images/GHLOGO.png" width="60%">
+            </a> <!-- clicar na logo leva de volta pro index -->
             <h5>Bem-Vindo!</h5>
         </div>
 
@@ -35,21 +38,35 @@
 
         <form action="http://localhost:3000/usuarios" method="post">
             <label for="nome">Nome Completo</label>
-            <input type="text" name="nome" class="campoLogIn">
+            <input type="text" name="nome" class="campoLogIn" placeholder="Ex: Fulano de Coisa">
+            <!-- lembrei das prova do elvys, pode colocar outra coisa ou mudar tbm ^ -->
 
             <label for="email">E-Mail</label>
-            <input type="email" name="email" class="campoLogIn">
+            <input type="email" name="email" class="campoLogIn" placeholder="exemplo@gmail.com">
 
             <label for="senha">Senha</label>
-            <input type="password" name="senha" class="campoLogIn">
+            <input type="password" name="senha" class="campoLogIn" id="senhaFill" placeholder="*******">
+            <i class="fa fa-eye" aria-hidden="true" id="showHide"></i>
 
             <button type="submit" class="subCadastro">
                 Enviar
-            </button>
+            </button> <!-- quando da submit ele abre a pagina usuarios, vai criar ela? -->
         </form>
 
     </div>
 
 </body>
+
+<script>
+    //script pra mostrar senha
+    const showHide = document.getElementById("showHide")
+    const senhaFill = document.getElementById("senhaFill")
+
+    showHide.addEventListener("click", function () {
+        this.classList.toggle("fa-eye-slash")
+        const tipo = senhaFill.getAttribute("type") === "password" ? "text" : "password"
+        senhaFill.setAttribute("type", tipo)
+    })
+</script>
 
 </html
