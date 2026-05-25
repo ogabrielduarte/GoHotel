@@ -10,6 +10,10 @@ body {
     background: #fcfeff;
 }
 
+p{
+    overflow-wrap: break-all
+}
+
 div.sideLogIn {
     color: rgb(221, 243, 243);
     font-family: Poppins;
@@ -24,8 +28,8 @@ div.sideLogIn {
     flex-direction: column;
     position: relative;
     width: 55%;
-    height: 100vh;
-    padding: 25px;
+    height: 100%;
+    min-width: 55%;
     box-sizing: border-box;
     align-items: center;
 }
@@ -35,6 +39,8 @@ div.bemvindo {
     flex-direction: column;
     align-items: center;
     gap: 0;
+    top: 20%;
+    position: absolute;
 }
 
 h5 {
@@ -59,6 +65,8 @@ p.copy {
     gap: 5px;
     margin-top: 150px;
     font-size: x-large;
+    position: absolute;
+    bottom: 15%;
 }
 
 h1,
@@ -84,17 +92,18 @@ p.subtitulo {
     top: 0;
     right: 0;
     width: 40%;
-    min-width: 400px;
+    min-width: 40%;
     min-height: 300px;
-    margin-top: 5rem;
-    margin-right: 25px;
+    margin: 5% 2.5%;
+
 }
 
-form {
+form{
     display: flex;
     flex-direction: column;
     text-align: left;
 }
+
 
 input.campoLogIn {
     background-color: rgb(245, 253, 255);
@@ -104,14 +113,14 @@ input.campoLogIn {
     width: 32vw;
     height: 7vh;
     font-size: 2.7vh;
-    position: relative
+    position: relative;
 }
 
 .fa-eye {
     position: absolute;
-    margin-top: 49.5vh;
-    margin-left: 30vw;
-    color: rgb(14, 108, 108)
+    color: rgb(14, 108, 108);
+    cursor: pointer;
+
 }
 
 label {
@@ -127,11 +136,12 @@ button.subCadastro {
     font-size: 1.5rem;
     border-radius: 1rem;
     border-style: none;
-    width: 500px;
-    height: 50px;
+    width: 32vw;
+    height: 7vh;
     margin-top: 40px;
     transition: ease 0.3s;
     cursor: pointer;
+    box-sizing: content-box;
 }
 
 button.subCadastro:hover {
@@ -140,9 +150,10 @@ button.subCadastro:hover {
     font-size: 1.5rem;
     border-radius: 1rem;
     border-style: none;
-    width: 500px;
-    height: 50px;
+    width: 32vw;
+    height: 7vh;
     margin-top: 40px;
+    box-sizing: content-box;
 }
 
 /* foco no index */
