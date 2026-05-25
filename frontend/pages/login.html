@@ -6,7 +6,8 @@
     <meta name="author" content="Gabriel S. Duarte, Agatha Marinho Santos">
     <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"> <!-- link pra pegar a imagem do olho na senha-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- link pra pegar a imagem do olho na senha-->
     <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <title>Cadastre</title>
@@ -34,16 +35,16 @@
     </div>
 
     <div class="login">
-        <h1><b>Log-In</b></h1>
+        <h1><b>Sign-In</b></h1>
 
-        <form action="http://localhost:3000/usuarios" method="post">
+        <form action="http://localhost:3000/usuarios" method="post" class="formulario">
+
             <label for="nome">Nome Completo</label>
             <input type="text" name="nome" class="campoLogIn" placeholder="Ex: Fulano de Coisa">
             <!-- lembrei das prova do elvys, pode colocar outra coisa ou mudar tbm ^ -->
 
             <label for="email">E-Mail</label>
             <input type="email" name="email" class="campoLogIn" placeholder="exemplo@gmail.com">
-
             <label for="senha">Senha</label>
             <input type="password" name="senha" class="campoLogIn" id="senhaFill" placeholder="*******">
             <i class="fa fa-eye" aria-hidden="true" id="showHide"></i>
@@ -51,6 +52,7 @@
             <button type="submit" class="subCadastro">
                 Enviar
             </button> <!-- quando da submit ele abre a pagina usuarios, vai criar ela? -->
+
         </form>
 
     </div>
@@ -69,4 +71,4 @@
     })
 </script>
 
-</html
+</html>
