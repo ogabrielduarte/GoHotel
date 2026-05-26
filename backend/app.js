@@ -14,6 +14,9 @@ app.get('/', (req, res) => {
 // app.use()
 app.use(express.json());
 
+app.use(express.urlencoded({ extended: true }));
+
+// app.use() para rotas
 app.use(usuarioRoutes);
 
 app.use(hotelRoutes);
