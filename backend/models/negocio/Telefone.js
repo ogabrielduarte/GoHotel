@@ -3,7 +3,8 @@ export class Telefone {
     #idUsuario;
     #telefone;
 
-    constructor({ idUsuario, telefone }) {
+    constructor({ id = null, idUsuario, telefone }) {
+        this.#id = id;
         this.setIdUsuario(idUsuario);
         this.setTelefone(telefone);
     }
