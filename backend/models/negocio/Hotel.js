@@ -5,7 +5,8 @@ export class Hotel {
     #localizacao;
     #quartos; //número de quartos disponíveis no hotel
 
-    constructor({ cnpj, fantasia, localizacao, quartos }) {
+    constructor({ id = null, cnpj, fantasia, localizacao, quartos }) {
+        this.#id = id;
         setCnpj(cnpj);
         setFantasia(fantasia);
         setLocalizacao(localizacao);
