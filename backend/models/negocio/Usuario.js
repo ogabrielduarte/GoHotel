@@ -6,7 +6,8 @@ export class Usuario {
     #email;
     #senha;
 
-    constructor({ nome, email, senha }) {
+    constructor({ id = null, nome, email, senha }) {
+        this.#id = id;
         this.setNome(nome);
         this.setEmail(email);
         this.setSenha(senha);
