@@ -1,9 +1,10 @@
 import express from 'express';
 
-// ROTAS
+// IMPORTAÇÃO DAS ROTAS
 import usuarioRoutes from './routes/UsuarioRoutes.js';
 import hotelRoutes from './routes/HotelRoutes.js';
 import telefoneRoutes from './routes/TelefonesRoutes.js';
+import reservaRoutes from './routes/ReservaRoutes.js';
 
 const app = express();
 
@@ -22,5 +23,7 @@ app.use(usuarioRoutes);
 app.use(hotelRoutes);
 
 app.use(telefoneRoutes);
+
+app.use(reservaRoutes);
 
 export default app;
