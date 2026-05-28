@@ -168,8 +168,7 @@ input.subCadastro:hover {
 .nav {
     max-height: 200px;
     display: flex;
-    align-items: center;
-    /* verticalmente */
+    align-items: center;/* verticalmente */
     gap: 1.5rem;
     padding-left: 60vw;
 }
@@ -188,10 +187,10 @@ input.subCadastro:hover {
     font-family: Poppins;
     font-size: 1rem;
     color: #fcfeff;
-    background: linear-gradient(180deg,
-            rgb(31, 122, 132),
-            rgb(29, 105, 120),
-            rgba(6, 148, 148, 1));
+    background: linear-gradient(270deg,
+            rgb(11, 156, 156)10%,
+            rgb(41, 188, 191)50%,
+            rgb(11, 156, 156)90%);
     height: 6vh;
     min-height: 40px;
     max-height: 105px;
@@ -202,4 +201,9 @@ input.subCadastro:hover {
     transition: ease 0.3s;
     border-radius: 1rem;
     border-style: none;
+}
+
+.fa-circle-user {
+    color: rgb(3, 85, 85);
+    cursor: pointer;
 }
