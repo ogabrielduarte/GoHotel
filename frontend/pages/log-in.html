@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gabriel S. Duarte, Agatha Marinho Santos">
+    <meta name="keywords" content="projeto, IFAL, hotel, reserva">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- link pra pegar a imagem do olho na senha-->
+    <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Cadastre</title>
+</head>
+
+<body>
+    <div class="sideLogIn">
+
+        <div class="bemvindo">
+            <a href="../index.html" style="display:contents">
+                <img src="../assets/images/GHLOGO.png" width="60%">
+            </a> <!-- clicar na logo leva de volta pro index -->
+            <h5>Bem-Vindo!</h5>
+        </div>
+
+
+        <div id="bordao">
+            <h1 class="titulo">GoHotel</h1>
+            <p class="subtitulo">Reserva sem complicação</p>
+        </div>
+
+        <footer class="copy">
+            <p class="copy">© 2026 GoHotel. All rights reserved</p>
+        </footer>
+    </div>
+
+    <div class="login">
+        <h1><b>Log-In</b></h1>
+
+        <form action="http://localhost:3000/usuarios" method="post" class="formulario">
+
+            <label for="email">E-Mail</label>
+            <input type="email" name="email" class="campoLogIn" placeholder="exemplo@gmail.com">
+            <div class="formulario">
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" class="campoLogIn" id="senhaFill" placeholder="*******">
+            </div>
+            <input type="submit"
+                class="subCadastro"><!-- ajeitar pra quando cadastrar não abrir a pagina usuarios e sim voltar pro index -->
+
+        </form>
+
+    </div>
+
+</body>
+
+<script>
+    //script pra mostrar senha
+    const showHide = document.getElementById("showHide")
+    const senhaFill = document.getElementById("senhaFill")
+
+    showHide.addEventListener("click", function () {
+        this.classList.toggle("fa-eye-slash")
+        const tipo = senhaFill.getAttribute("type") === "password" ? "text" : "password"
+        senhaFill.setAttribute("type", tipo)
+    })
+</script>
+
+</html>
