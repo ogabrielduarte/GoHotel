@@ -8,6 +8,8 @@ const router = express.Router();
 // ROTAS DE USUÁRIO
 router.post('/usuarios', controller.cadastrar);
 
+router.post('/usuarios', controller.login);
+
 router.get('/usuarios/:id', controller.buscar);
 
 router.put('/usuarios/:id', controller.atualizar);
