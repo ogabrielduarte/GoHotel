@@ -98,7 +98,7 @@ p.subtitulo {
     margin: 4% 2.5%;
 }
 
-form {
+.formulario {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -116,10 +116,23 @@ input.campoLogIn {
     position: relative;
 }
 
+.senhaContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+#senhaFill{
+    margin:0;
+}
+
 .fa-eye {
     position: absolute;
     color: rgb(14, 108, 108);
     cursor: pointer;
+    right: 1rem;
+    top: 68%;
 }
 
 label {
@@ -168,7 +181,8 @@ input.subCadastro:hover {
 .nav {
     max-height: 200px;
     display: flex;
-    align-items: center;/* verticalmente */
+    align-items: center;
+    /* verticalmente */
     gap: 1.5rem;
     padding-left: 60vw;
 }
@@ -188,9 +202,9 @@ input.subCadastro:hover {
     font-size: 1rem;
     color: #fcfeff;
     background: linear-gradient(270deg,
-            rgb(11, 156, 156)10%,
-            rgb(41, 188, 191)50%,
-            rgb(11, 156, 156)90%);
+            rgb(41, 188, 191)10%,
+            rgb(11, 156, 156)50%,
+            rgb(41, 188, 191)90%);
     height: 6vh;
     min-height: 40px;
     max-height: 105px;
