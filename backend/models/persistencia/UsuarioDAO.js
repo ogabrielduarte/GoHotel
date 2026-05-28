@@ -38,6 +38,44 @@ export class UsuarioDAO {
         });
     }
 
+    login(email) {
+
+        const db = this.iniciar();
+
+        return new Promise((resolve, reject) => {
+
+            const sql = `
+            SELECT *
+            FROM usuarios
+            WHERE email = ?
+        `;
+
+            db.get(
+                sql,
+                [email],
+                function (err, row) {
+
+                    db.close();
+
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+
+                    if (!row) {
+                        reject('Usuário não encontrado');
+                        return;
+                    }
+
+                    resolve(row);
+
+                }
+            );
+
+        });
+
+    }
+
     buscaPorId(id) {
         const db = this.iniciar();
 
@@ -124,7 +162,7 @@ export class UsuarioDAO {
             db.run(
                 sql,
                 [id],
-                function(err) {
+                function (err) {
                     db.close();
 
                     if (err) {
@@ -132,7 +170,7 @@ export class UsuarioDAO {
                         return;
                     }
 
-                    if(this.changes === 0) {
+                    if (this.changes === 0) {
                         reject('Usuário não encontrado');
                         return;
                     }
