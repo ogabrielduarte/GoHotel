@@ -1,6 +1,8 @@
 import { Usuario } from "../models/negocio/Usuario.js";
 import { UsuarioDAO } from "../models/persistencia/UsuarioDAO.js";
 
+import bcrypt from 'bcrypt';
+
 export class UsuarioController {
     async cadastrar(req, res) {
         try {
@@ -40,11 +42,24 @@ export class UsuarioController {
 
             const usuario = await dao.login(email);
 
-            if (usuario.senha !== senha) {
+            if (!usuario) {
+                return res.status(401).json({
+                    erro: 'Usuário não encontrado'
+                });
+            }
+
+            const senhaValida = await bcrypt.compare(
+                senha,
+                usuario.senha
+            );
+
+            if (!senhaValida) {
                 return res.status(401).json({
                     erro: 'Senha inválida'
                 });
             }
+
+            delete usuario.senha;
 
             res.status(200).json({
                 mensagem: 'Login realizado com sucesso',
@@ -53,7 +68,7 @@ export class UsuarioController {
 
         } catch (e) {
 
-            res.status(400).json({
+            res.status(401).json({
                 erro: e.message || e
             });
 
