@@ -123,8 +123,8 @@ input.campoLogIn {
     height: fit-content;
 }
 
-#senhaFill{
-    margin:0;
+#senhaFill {
+    margin: 0;
 }
 
 .fa-eye {
@@ -168,14 +168,15 @@ input.subCadastro:hover {
     display: flex;
     background: linear-gradient(100deg,
             rgba(29, 91, 120, 1),
-            rgba(6, 148, 148, 1),
+            rgba(6, 148, 148, 1) 40%,
             rgba(83, 229, 237, 1) 70%,
-            rgba(6, 148, 148, 1) 95%,
+            rgba(6, 148, 148, 1),
             rgba(29, 91, 120, 1));
     width: 100%;
     min-width: 700px;
     height: 12vh;
     min-height: 90px;
+    max-height: 200px;
 }
 
 .nav {
@@ -184,40 +185,63 @@ input.subCadastro:hover {
     align-items: center;
     /* verticalmente */
     gap: 1.5rem;
-    padding-left: 60vw;
+    padding-left: 57vw;
 }
 
 .home {
     position: absolute;
     margin-top: 2vh;
     margin-left: 3vh;
-    width: 120px;
-    max-width: 300px;
+    width: 140px;
+    max-width: 600px;
     min-width: 100px;
+}
 
+.home:hover {
+    transition: ease 0.3s;
+    border-radius: 100%;
+    box-shadow: 0 0 15px rgb(166, 247, 246);
 }
 
 .redirect {
     font-family: Poppins;
     font-size: 1rem;
     color: #fcfeff;
-    background: linear-gradient(270deg,
-            rgb(41, 188, 191)10%,
-            rgb(11, 156, 156)50%,
-            rgb(41, 188, 191)90%);
+    background: radial-gradient(
+            rgb(56, 207, 207),
+            rgb(41, 188, 191)60%);
+    /*border: groove 5px rgba(189, 223, 223, 0.365); possibilidade de fazer algo parecendo uma bolha*/
+    border-style: none;
     height: 6vh;
     min-height: 40px;
     max-height: 105px;
     width: 12vw;
     min-width: 130px;
     max-width: 230px;
-    border-style: none;
     transition: ease 0.3s;
     border-radius: 1rem;
-    border-style: none;
+    cursor: pointer;
+}
+
+.redirect:hover {
+    opacity: 0.87;
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 15px rgb(166, 247, 246);
 }
 
 .fa-circle-user {
-    color: rgb(3, 85, 85);
+    color: #fcfeff;
+    margin-left: 7rem;
+    text-align: right;
     cursor: pointer;
+    font-size: 4.3vh;
+    min-height: 40px;
+    max-height: 105px;
+}
+
+.fa-circle-user:hover {
+    color: #fcfeff;
+    transition: ease 0.3s;
+    text-shadow: 0 0 15px rgb(166, 247, 246);
 }
