@@ -22,9 +22,21 @@
             <a href="./pages/log-in.html"><button class="redirect">login</button></a>
             <a href="./pages/hotel.html"><button class="redirect">hoteis</button></a>
             <!-- mexer pra so o admin ver "<a href=""><button class="redirect">reservas</button></a>" -->
-            <i class="fa-regular fa-circle-user"></i>
+            <i class="fa-regular fa-circle-user" id="perfil"></i>
         </nav>
     </header>
 </body>
+<script>
+    const perfilPage = document.getElementById("perfil");
+
+    perfilPage.addEventListener("click", function(){
+        location.href = "./pages/user.html"
+        /*if(usuario logado){
+        redirect pagina perfil
+        }else{
+        redirect pagina de login
+        }*/
+    })
+</script>
 
 </html>
