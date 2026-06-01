@@ -4,9 +4,9 @@ export class Usuario {
     #id;
     #nome;
     #genero;
-    #checagem;
     #email;
     #senha;
+    #checagem;
 
     constructor({ id = null, nome, genero, checagem, email, senha }) {
         this.#id = id;
@@ -33,6 +33,24 @@ export class Usuario {
     // GET-SET NOME
     getNome() {
         return this.#nome;
+    }
+
+    setNome(nome) {
+        if (!nome) {
+            throw new Error('O campo nome não pode estar vazio');
+        }
+
+        if (typeof nome !== 'string') {
+            throw new Error('Nome inválido');
+        }
+
+        const regexEspaco = /\s+/;
+
+        if (nome.trim().split(regexEspaco).length < 2) {
+            throw new Error('Informe nome e sobrenome');
+        }
+
+        this.#nome = nome;
     }
 
     // GET-SET GÊNERO
