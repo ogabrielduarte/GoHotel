@@ -91,6 +91,30 @@ export class UsuarioDAO {
 
     }
 
+    listarTodos() {
+        const db = this.iniciar();
+
+        return new Promise((resolve, reject) => {
+            const sql = `
+                SELECT * FROM usuarios
+            `;
+
+            db.all(
+                sql, [],
+                function(err, rows) {
+                    db.close();
+
+                    if(err) {
+                        reject(err);
+                        return;
+                    }
+
+                    resolve(rows);
+                }
+            );
+        });
+    }
+
     buscaPorId(id) {
         const db = this.iniciar();
 
