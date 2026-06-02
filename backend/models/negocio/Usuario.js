@@ -72,7 +72,6 @@ export class Usuario {
             'masculino',
             'feminino',
             'não-binário',
-            'outro',
             'Prefiro não Informar'
         ];
 
