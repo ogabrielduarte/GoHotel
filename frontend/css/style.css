@@ -90,7 +90,7 @@ p.subtitulo {
     text-align: center;
     position: absolute;
     bottom: 0;
-    top: 0;
+    top: 10%;
     right: 0;
     width: 40%;
     min-width: 40%;
@@ -108,12 +108,11 @@ p.subtitulo {
     text-align: center;
     position: absolute;
     bottom: 0;
-    top: 0;
-    right: 0;
+    top: 25%;
+    right: 2.5%;
     width: 40%;
     min-width: 40%;
     min-height: 300px;
-    margin: 10% 2.5%;
 }
 
 p.toCadastro {
