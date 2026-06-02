@@ -19,8 +19,7 @@
         </a>
         <!-- mesma coisa que escrevi no hotel.html-->
         <nav class="nav">
-            <a href="./pages/log-in.html"><button class="redirect">log-in</button></a>
-            <a href="./pages/hotel.html"><button class="redirect">faça sua reserva!</button></a>
+            <a href="./pages/hotel.html"><button class="redirect reserva">faça sua reserva!</button></a>
             <!-- mexer pra so o admin ver "<a href=""><button class="redirect">reservas</button></a>" -->
         </nav>
 
@@ -29,6 +28,7 @@
 </body>
 <script>
     const perfilPage = document.getElementById("perfil");
+    const loginButton = document.querySelector(".reserva");
 
     perfilPage.addEventListener("click", function(){
         location.href = "./pages/user.html"
@@ -37,7 +37,11 @@
         }else{
         redirect pagina de login
         }*/
-    })
+    });
+
+    loginButton.addEventListener("click", function() { //autenticar log-in
+
+    });
 </script>
 
 </html>
