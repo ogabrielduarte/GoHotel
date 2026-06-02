@@ -95,7 +95,7 @@ p.subtitulo {
     width: 40%;
     min-width: 40%;
     min-height: 300px;
-    margin: 4% 2.5%;
+    margin: 2% 2.5%;
 }
 
 .formulario {
@@ -105,8 +105,42 @@ p.subtitulo {
 }
 
 .genero {
+    background-color: rgb(245, 253, 255);
+    border: solid rgb(231, 248, 248) 3px;
+    border-radius: 1rem;
     display: grid;
-    grid-auto-flow: column;
+    height: fit-content;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: auto auto;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    row-gap: 2px; 
+    column-gap: 60px;
+}
+
+p.textoGenero {
+    margin: 0;
+    font-size: xx-small;
+    text-align: center;
+}
+
+input[name="genero"] {
+    width: 15px;
+    height: 15px;
+}
+
+.checagem {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+p.preferencia {
+    font-size: xx-small;
+    margin: 0;
 }
 
 
@@ -154,8 +188,8 @@ input.subCadastro {
     border-radius: 1rem;
     border-style: none;
     width: 100%;
-    height: 7vh;
-    margin-top: 7vh;
+    height: 55px;
+    margin-top: 20px;
     transition: ease 0.3s;
     cursor: pointer;
 }
