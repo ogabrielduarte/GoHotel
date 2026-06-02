@@ -230,7 +230,7 @@ input.subCadastro:hover {
     background: linear-gradient(100deg,
             rgba(29, 91, 120, 1),
             rgba(6, 148, 148, 1) 40%,
-            rgba(83, 229, 237, 1) 70%,
+            rgb(69, 191, 197) 70%,
             rgba(6, 148, 148, 1),
             rgba(29, 91, 120, 1));
     width: 100%;
@@ -241,12 +241,12 @@ input.subCadastro:hover {
 }
 
 .nav {
+    position: absolute;
     max-height: 200px;
     display: flex;
     align-items: center;
     /* verticalmente */
-    gap: 1.5rem;
-    padding-left: 57vw;
+    left: 35%;
 }
 
 .home {
@@ -269,10 +269,10 @@ input.subCadastro:hover {
     font-size: 1rem;
     color: #fcfeff;
     background: radial-gradient(
-            rgb(56, 207, 207),
-            rgb(41, 188, 191)60%);
-    /*border: groove 5px rgba(189, 223, 223, 0.365); possibilidade de fazer algo parecendo uma bolha*/
+            rgb(51, 151, 151),
+            rgb(33, 123, 126)60%);
     border-style: none;
+    margin: 25px;
     height: 6vh;
     min-height: 40px;
     max-height: 105px;
@@ -295,6 +295,9 @@ input.subCadastro:hover {
     color: #fcfeff;
     margin-left: 7rem;
     text-align: right;
+    position: absolute;
+    right: 50px;
+    top: 31.5%;
     cursor: pointer;
     font-size: 4.3vh;
     min-height: 40px;
