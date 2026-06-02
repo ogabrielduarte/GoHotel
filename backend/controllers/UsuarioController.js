@@ -87,7 +87,30 @@ export class UsuarioController {
 
     }
 
-    async buscar(req, res) {
+    async listarTodos(req, res) {
+        try {
+            const dao = new UsuarioDAO();
+
+            const users = await dao.listarTodos();
+            
+            if(users.length < 0) {
+                res.status(400).json({
+                    erro: 'sem usuários cadastrados'
+                });
+            }
+
+            res.status(201).json(users)
+
+        } catch (e) {
+
+            return res.status(400).json({
+                erro: e.message || e
+            });
+            
+        }
+    } 
+
+    async buscarPorId(req, res) {
         try {
 
             const id = Number(req.params.id);
