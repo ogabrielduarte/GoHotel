@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Hoteis</title>
+    <title>Faça sua reserva! | GoHotel</title>
 </head>
 
 <body>
@@ -18,19 +18,15 @@
             <img src="../assets/images/GHLOGO.png" class="home">
         </a>
         <!-- pensando se seria interessante colocar a opção de pesquisar mas acho que não temos tempo pra isso -->
-        <nav class="nav">
-            <a href="./log-in.html"><button class="redirect">login</button></a>
-            <a href="./hotel.html"><button class="redirect">hoteis</button></a>
-            <!-- mexer pra so o admin ver "<a href=""><button class="redirect">reservas</button></a>" -->
-            <i class="fa-regular fa-circle-user" id="perfil"></i> 
-        </nav>
         
+        <i class="fa-regular fa-circle-user" id="perfil"></i>
+
     </header>
 </body>
 <script>
     const perfilPage = document.getElementById("perfil");
 
-    perfilPage.addEventListener("click", function(){
+    perfilPage.addEventListener("click", function () {
         location.href = "./user.html"
         /*if(usuario logado){
         redirect pagina perfil
