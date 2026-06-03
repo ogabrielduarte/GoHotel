@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="Gabriel S. Duarte, Agatha Marinho Santos">
+    <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Perfil</title>
 </head>
+
 <body>
-    isso é uma imagem
-    <img src="../assets/images/ideiasPerfil.png">
+    <header class="header">
+        <a href="../index.html">
+            <img src="./assets/images/GHLOGO.png" class="home">
+        </a>
+        
+        <nav class="nav">
+            <button class="redirect" id="reserva">faça sua reserva!</button>
+        </nav>
+
+        <i class="fa-regular fa-circle-user" id="perfil"></i>
+    </header>
 </body>
+<script type="module">
+    import { verificarLogin } from "./verifica.js"
+    document.addEventListener("DOMContentLoaded", verificarLogin) // verificar se o login realmente ta feito
+</script>
+
 </html>
