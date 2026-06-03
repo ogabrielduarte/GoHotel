@@ -7,7 +7,6 @@
     <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <!-- link pra pegar a imagem do olho na senha-->
     <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <title>Cadastre</title>
@@ -77,7 +76,6 @@
             <!-- ajeitar pra quando cadastrar não abrir a pagina usuarios e sim voltar pro index -->
 
         </form>
-
     </div>
 
 </body>
@@ -87,7 +85,7 @@
     const showHide = document.getElementById("showHide")
     const senhaFill = document.getElementById("senhaFill")
 
-    showHide.addEventListener("click", function () {
+    showHide.addEventListener("click", () => {
         this.classList.toggle("fa-eye-slash")
         const tipo = senhaFill.getAttribute("type") === "password" ? "text" : "password"
         senhaFill.setAttribute("type", tipo)
