@@ -1,5 +1,7 @@
 # GoHotel: Sistema de Reservas
 
+Visite o site da GoHotel [clicando aqui :D](https://go-hotel.vercel.app)
+
 Este é um projeto acadêmico proposto como integração das disciplinas do
 curso técnico de Desenvolvimento de Sistemas do IFAL, com o objetivo de aplicar
 os conhecimentos adquiridos durante o curso na construção de um sistema utilizável.
