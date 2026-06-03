@@ -136,7 +136,7 @@ p.toCadastro {
     justify-content: center;
     justify-items: center;
     align-items: center;
-    row-gap: 2px; 
+    row-gap: 2px;
     column-gap: 60px;
 }
 
@@ -221,40 +221,38 @@ input.subCadastro:hover {
 }
 
 /* foco no index */
-
 .header {
     position: fixed;
     top: 0;
-    display: flex;
-    background: linear-gradient(100deg,
-            rgba(29, 91, 120, 1),
-            rgba(6, 148, 148, 1) 40%,
-            rgb(69, 191, 197) 70%,
-            rgba(6, 148, 148, 1),
-            rgba(29, 91, 120, 1));
     width: 100%;
-    min-width: 700px;
-    height: 12vh;
-    min-height: 90px;
-    max-height: 200px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        100deg,
+        rgba(29, 91, 120, 1),
+        rgba(6, 148, 148, 1) 40%,
+        rgb(69, 191, 197) 70%,
+        rgba(6, 148, 148, 1),
+        rgba(29, 91, 120, 1)
+    );
 }
 
-.nav {
-    position: absolute;
-    max-height: 200px;
-    display: flex;
-    left: 33%;
-    top: 20px;
-    /* verticalmente */
+.header > a {
+    flex: 0 0 auto;
 }
 
 .home {
-    position: absolute;
-    margin-top: 2vh;
-    margin-left: 3vh;
-    width: 140px;
-    max-width: 600px;
-    min-width: 100px;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    display: block;
 }
 
 .home:hover {
@@ -263,23 +261,31 @@ input.subCadastro:hover {
     box-shadow: 0 0 15px rgb(166, 247, 246);
 }
 
+.nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
 .redirect {
-    position: absolute;
     font-family: Poppins;
     font-size: 1.5rem;
     color: #fcfeff;
+
     background: radial-gradient(
-            rgb(51, 151, 151),
-            rgb(33, 123, 126)60%);
-    border-style: none;
-    height: 70px;
-    min-height: 40px;
-    max-height: 105px;
-    width: 700px;
-    min-width: 130px;
-    transition: ease 0.3s;
+        rgb(51, 151, 151),
+        rgb(33, 123, 126) 60%
+    );
+
+    border: none;
     border-radius: 1rem;
+
+    width: 700px;
+    max-width: 60vw;
+    height: 70px;
+
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .redirect:hover {
@@ -290,16 +296,11 @@ input.subCadastro:hover {
 }
 
 .fa-circle-user {
+    flex: 0 0 auto;
+
     color: #fcfeff;
-    margin-left: 7rem;
-    text-align: right;
-    position: absolute;
-    right: 50px;
-    top: 31.5%;
+    font-size: 3rem;
     cursor: pointer;
-    font-size: 4.3vh;
-    min-height: 40px;
-    max-height: 105px;
 }
 
 .fa-circle-user:hover {
