@@ -17,22 +17,20 @@
         <a href="./index.html"> <!-- pra recarregar a página -->
             <img src="./assets/images/GHLOGO.png" class="home">
         </a>
-        <!-- mesma coisa que escrevi no hotel.html-->
+        
         <nav class="nav">
             <button class="redirect" id="reserva">faça sua reserva!</button>
-            <!-- mexer pra so o admin ver "<a href=""><button class="redirect">reservas</button></a>" -->
         </nav>
 
         <i class="fa-regular fa-circle-user" id="perfil"></i>
     </header>
 </body>
 <script>
+    const token = localStorage.getItem('token')
     const perfilPage = document.getElementById("perfil");
     const redirectReserva = document.getElementById("reserva");
 
     perfilPage.addEventListener("click", () => {
-        const token = localStorage.getItem('token')
-
         if (token) {
             location.href = './pages/user.html'
         } else {
@@ -42,8 +40,6 @@
     });
 
     redirectReserva.addEventListener("click", () => {
-        const token = localStorage.getItem('token')
-
         if (token) {
             location.href = './pages/hoteis.html'
         } else {
