@@ -88,14 +88,12 @@ p.subtitulo {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    position: absolute;
-    bottom: 0;
-    top: 10%;
+    position: fixed;
+    top: 40px;
     right: 0;
     width: 40%;
     min-width: 40%;
     min-height: 300px;
-    margin: 2% 2.5%;
 }
 
 .login {
@@ -190,9 +188,10 @@ input.campoLogIn {
 .fa-eye {
     position: absolute;
     color: rgb(14, 108, 108);
+    font-size: large;
     cursor: pointer;
     right: 1rem;
-    top: 20px;
+    top: 25px;
 }
 
 label {
