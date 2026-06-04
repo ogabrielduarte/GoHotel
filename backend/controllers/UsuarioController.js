@@ -2,6 +2,7 @@ import { Usuario } from "../models/negocio/Usuario.js";
 import { UsuarioDAO } from "../models/persistencia/UsuarioDAO.js";
 
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export class UsuarioController {
     async cadastrar(req, res) {
