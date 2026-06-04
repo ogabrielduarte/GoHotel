@@ -14,8 +14,9 @@ export class Usuario {
         this.setNome(nome);
         this.setGenero(genero);
         this.setEmail(email);
+        this.setSenha(senha);
         this.setTermos(termos);
-        this.receberEmails(receberEmails);
+        this.setReceberEmails(receberEmails);
         
     }
 
@@ -141,9 +142,9 @@ export class Usuario {
             throw new Error(
                 'É obrigatório aceitar o compartilhamento de dados'
             );
-
-            this.#termos = 1;
         }
+        
+            this.#termos = 1;
     }
 
     // GET-SET RECEBER E-MAILS
@@ -159,6 +160,6 @@ export class Usuario {
             receberEmails = 0;
         }
 
-        this.#receberemails = receberEmails;
+        this.#receberEmails = receberEmails;
     }
 }
