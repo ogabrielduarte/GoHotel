@@ -6,15 +6,17 @@ export class Usuario {
     #genero;
     #email;
     #senha;
-    #checagem;
+    #termos;
+    #receberEmails
 
-    constructor({ id = null, nome, genero, checagem, email, senha }) {
+    constructor({ id = null, nome, genero, checagem, email, senha, termos, receberEmails }) {
         this.#id = id;
         this.setNome(nome);
         this.setGenero(genero);
         this.setEmail(email);
-        this.setSenha(senha);
-        this.setChecagem(checagem);
+        this.setTermos(termos);
+        this.receberEmails(receberEmails);
+        
     }
 
     // GET-SET ID
@@ -128,29 +130,35 @@ export class Usuario {
         this.#senha = senhaHash;
     }
 
-    // GET-SET CHECAGEM
-    getChecagem() {
-        return this.#checagem;
+    // GET-SET TERMOS
+    getTermos() {
+        return this.#termos;
     }
 
-    setChecagem(checagem) {
+    setTermos(termos) {
 
-        if (!checagem) {
-            throw new Error('As checagens são obrigatórias');
-        }
-
-        // transforma em array se vier apenas 1 checkbox
-        if (!Array.isArray(checagem)) {
-            checagem = [checagem];
-        }
-
-        // primeira checkbox obrigatória
-        if (checagem[0] !== 'aceito_dados') {
+        if (termos !== 'on') {
             throw new Error(
                 'É obrigatório aceitar o compartilhamento de dados'
             );
+
+            this.#termos = 1;
+        }
+    }
+
+    // GET-SET RECEBER E-MAILS
+    getReceberEmails() {
+        return this.#receberEmails;
+    }
+
+    setReceberEmails(receberEmails) {
+
+        if (receberEmails === 'on') {
+            receberEmails = 1;
+        } else {
+            receberEmails = 0;
         }
 
-        this.#checagem = checagem;
+        this.#receberemails = receberEmails;
     }
 }
