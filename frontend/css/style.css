@@ -307,9 +307,11 @@ input.subCadastro:hover {
     border: solid, 3px, #fcfeffc4;
     border-radius: 5rem;
 
-    width: 700px;
+    width: 320px;
     max-width: 60vw;
     height: 70px;
+
+    margin: 0 15px 0 15px;
 
     cursor: pointer;
     transition: 0.3s;
@@ -333,6 +335,23 @@ input.subCadastro:hover {
 }
 
 .fa-circle-user:hover {
+    color: #fcfeff;
+    transition: ease 0.3s;
+    text-shadow: 0 0 15px rgb(166, 247, 246);
+}
+
+
+
+.fa-sign-out {
+    flex: 0 0 auto;
+
+    color: #fcfeff;
+    font-size: 2rem;
+
+    cursor: pointer;
+}
+
+.fa-sign-out:hover {
     color: #fcfeff;
     transition: ease 0.3s;
     text-shadow: 0 0 15px rgb(166, 247, 246);
