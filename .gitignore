@@ -1,3 +1,4 @@
 backend/.env
 backend/node_modules
 backend/database/gohotel_db.db
+backend/database/query.js
