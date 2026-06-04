@@ -38,6 +38,37 @@ export class HotelDAO {
         });
     }
 
+    listarTodos() {
+        const db = this.iniciar;
+
+        return new Promise((resolve, reject) => {
+            const sql = `
+                SELECT * FROM hoteis
+            `;
+
+            db.all(
+                sql,
+                [],
+
+                function(err, rows) {
+                    db.close;
+
+                    if(err) {
+                        reject(err);
+                        return;
+                    }
+
+                    if(!rows) {
+                        reject('Não há hoteis cadastrados');
+                        return;
+                    }
+
+                    resolve(rows);
+                }
+            )
+        });
+    }
+
     buscarPorId(id) {
         const db = this.iniciar();
 
