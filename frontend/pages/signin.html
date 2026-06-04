@@ -44,10 +44,10 @@
 
             <label for="genero">Gênero</label>
             <div class="genero">
-                <input type="radio" name="genero" id="masculino">
-                <input type="radio" name="genero" id="feminino">
-                <input type="radio" name="genero" id="nao-binario">
-                <input type="radio" name="genero" id="nao-informar">
+                <input type="radio" name="genero" value="masculino">
+                <input type="radio" name="genero" value="feminino">
+                <input type="radio" name="genero" value="nao-binario">
+                <input type="radio" name="genero" value="nao-informar">
 
                 <p class="textoGenero">Masculino</p>
                 <p class="textoGenero">Feminino</p>
@@ -80,16 +80,12 @@
 
 </body>
 
-<script>
+<script type="module">
+    import { senhaToggle } from "./modulos.js"
     //script pra mostrar senha
     const showHide = document.getElementById("showHide")
-    const senhaFill = document.getElementById("senhaFill")
 
-    showHide.addEventListener("click", () => {
-        this.classList.toggle("fa-eye-slash")
-        const tipo = senhaFill.getAttribute("type") === "password" ? "text" : "password"
-        senhaFill.setAttribute("type", tipo)
-    })
+    showHide.addEventListener("click", senhaToggle)
 </script>
 
 </html>

@@ -13,7 +13,6 @@ body {
 }
 
 body {
-    font-family: Poppins;
     display: flex;
     min-height: 100vh;
 }
@@ -297,14 +296,16 @@ input.subCadastro:hover {
 }
 
 .redirect {
+    font-family: Poppins;
     font-size: 1.5rem;
     color: #fcfeff;
 
-    background: radial-gradient(rgb(51, 151, 151),
-            rgb(33, 123, 126) 60%);
+    background: radial-gradient(
+        rgb(51, 151, 151),
+        rgb(33, 123, 126) 60%);
 
-    border: none;
-    border-radius: 1rem;
+    border: solid, 3px, #fcfeffc4;
+    border-radius: 5rem;
 
     width: 700px;
     max-width: 60vw;

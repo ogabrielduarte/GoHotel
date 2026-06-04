@@ -56,46 +56,12 @@
 
 </body>
 
-<script>
-    const email = document.getElementById("email")
-    const senha = document.getElementById("email")
-
-    const resposta = await fetch('/login', {
-
-        method: 'POST',
-
-        headers: {
-            'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringfy({
-            email,
-            senha
-        })
-    })
-
-    const data = await resposta.json();
-
-    if (resposta.ok) {
-        localStorage.setItem(
-            'token',
-            data.token
-        )
-
-        window.location.href = '/dashboard.html'
-    } else {
-        alert(data.erro);
-    }
-
+<script type="module">
+    import { senhaToggle } from "./modulos.js"
     //script pra mostrar senha
     const showHide = document.getElementById("showHide")
-    const senhaFill = document.getElementById("senhaFill")
 
-    showHide.addEventListener("click", function () {
-        this.classList.toggle("fa-eye-slash")
-        const tipo = senhaFill.getAttribute("type") === "password" ? "text" : "password"
-        senhaFill.setAttribute("type", tipo)
-    })
+    showHide.addEventListener("click", senhaToggle)
 </script>
 
 </html>
