@@ -19,9 +19,10 @@ export class UsuarioDAO {
                 genero,
                 email,
                 senha,
-                checagem
+                termos,
+                receber_emails,
             )
-            VALUES (?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?)
         `;
 
         db.run(
@@ -31,8 +32,8 @@ export class UsuarioDAO {
                 usuario.getGenero(),
                 usuario.getEmail(),
                 usuario.getSenha(),
-
-                JSON.stringify(usuario.getChecagem())
+                usuario.getTermos(),
+                usuario.getReceberEmails()
             ],
 
             function (err) {
