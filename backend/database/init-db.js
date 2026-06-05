@@ -22,7 +22,7 @@ function criarTabelas() {
                     cnpj INTEGER UNIQUE NOT NULL,
                     fantasia TEXT NOT NULL,
                     localizacao TEXT,
-                    QTD_QUARTOS INTEGER NOT NULL
+                    qtd_quartos INTEGER NOT NULL
                 );
                 `)
 
