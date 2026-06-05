@@ -340,7 +340,15 @@ input.subCadastro:hover {
     text-shadow: 0 0 15px rgb(166, 247, 246);
 }
 
-
+#fundo {
+    position: fixed;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: background-image 0.7s ease-in-out;
+    filter: brightness(0.7) blur(2px);
+}
 
 .fa-sign-out {
     flex: 0 0 auto;
