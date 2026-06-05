@@ -1,8 +1,10 @@
 async function listarHoteis() {
     const resposta = await fetch('http://localhost:3000/hoteis');
     
-    const hoteis = await resposta.json();
+    const data = await resposta.json();
     
+    const hoteis = data.hoteis;
+
     const container = document.getElementById('container-hoteis');
 
     container.innerHTML = '';
@@ -13,11 +15,10 @@ async function listarHoteis() {
         card.classList.add('card');
         
         card.innerHTML = `
-            <h3>${hotel.nome}</h3>
-            <p>Email: ${hotel.email}</p>
+            <h3>${hotel.fantasia}</h3>
+            <p>Localização: ${hotel.localizacao}</p>
 
-            <button class="update-btn" data-id="${hotel.id}">Atualizar</button>
-            <button class="delete-btn" data-id="${hotel.id}">Excluir</button>
+            <button class="update-btn" data-id="${hotel.id}">Fazer Reserva</button>
         `;
         
         container.appendChild(card);
