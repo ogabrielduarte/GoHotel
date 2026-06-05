@@ -75,12 +75,12 @@ export class UsuarioController {
 
             res.status(200).json({
                 mensagem: 'Login realizado com sucesso',
-                usuario
+                token
             });
 
         } catch (e) {
 
-            res.status(401).json({
+            res.status(500).json({
                 erro: e.message || e
             });
 
