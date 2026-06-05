@@ -2,21 +2,18 @@ import { Hotel } from "../models/negocio/Hotel.js";
 import { HotelDAO } from "../models/persistencia/HotelDAO.js";
 
 export class HotelController {
+
     async cadastrar(req, res) {
         try {
-
             const hotel = new Hotel(req.body);
-
             const dao = new HotelDAO();
 
             const id = await dao.cadastrar(hotel);
 
-            res.status(201).json({
-                id
-            });
+            return res.status(201).json({ id });
 
         } catch (e) {
-            res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
         }
@@ -25,14 +22,12 @@ export class HotelController {
     async listarTodos(req, res) {
         try {
             const dao = new HotelDAO();
-
             const hoteis = await dao.listarTodos();
 
-            res.status(200).json({ hoteis });
+            return res.status(200).json({ hoteis });
 
         } catch (e) {
-
-            res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
         }
@@ -40,18 +35,15 @@ export class HotelController {
 
     async buscarPorId(req, res) {
         try {
-            const id = req.params.id;
-
+            const { id } = req.params;
             const dao = new HotelDAO();
 
             const hotel = await dao.buscarPorId(id);
 
-            res.status(201).json({
-                hotel
-            });
+            return res.status(200).json({ hotel });
 
         } catch (e) {
-            res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
         }
@@ -59,56 +51,50 @@ export class HotelController {
 
     async atualizar(req, res) {
         try {
-            const id = req.params.id;
-
-            const dao = new HotelDAO();
-
-            if (!id) {
-                res.status(400).json({
-                    erro: 'O usuário não existe'
-                });
-            }
-
+            const { id } = req.params;
             const dados = req.body;
 
-            if (Object.keys(dados).length === 0) {
-                res.status(400).json({
-                    erro: 'Não há atualizações'
+            if (!id) {
+                return res.status(400).json({
+                    erro: "Hotel não existe"
                 });
             }
 
-            const update = await dao.atualizar(dados);
+            if (!dados || Object.keys(dados).length === 0) {
+                return res.status(400).json({
+                    erro: "Não há atualizações"
+                });
+            }
 
-            res.status(201).json({
-                update
-            });
+            const dao = new HotelDAO();
+            const update = await dao.atualizar(id, dados);
+
+            return res.status(200).json({ update });
 
         } catch (e) {
-            res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
         }
     }
 
     async deletar(req, res) {
-
         try {
-            const id = req.params.id;
+            const { id } = req.params;
 
             if (!id) {
                 return res.status(400).json({
-                    erro: 'O hotel não existe'
+                    erro: "O hotel não existe"
                 });
             }
 
             const dao = new HotelDAO();
+            const result = await dao.deletar(id);
 
-            const DELETE = await dao.deletar(id);
-
-            res.status(200).json(DELETE);
+            return res.status(200).json(result);
 
         } catch (e) {
-            res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
         }
