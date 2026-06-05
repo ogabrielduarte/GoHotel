@@ -15,3 +15,25 @@ export function senhaToggle() {
     const tipo = senhaFill.getAttribute("type") === "password" ? "text" : "password"
     senhaFill.setAttribute("type", tipo)
 }
+
+const indexIMG = []
+for (let i = 1; i <= 5; i++) {
+    indexIMG.push(`./assets/images/index-img-${i}.jpg`)
+}
+
+indexIMG.forEach(src => {
+    const img = new Image()
+    img.src = src
+})
+
+export function indexBG() {
+    const fundo = document.getElementById('fundo')
+    
+    let atual = 0;
+    fundo.style.backgroundImage = `url('${indexIMG[atual]}')`
+
+    setInterval(() => {
+        atual = (atual + 1) % indexIMG.length;
+        fundo.style.backgroundImage = `url('${indexIMG[atual]}')`
+    }, 8000)
+}
