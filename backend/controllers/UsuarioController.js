@@ -13,7 +13,25 @@ export class UsuarioController {
 
             const id = await dao.cadastrar(usuario);
 
-            return res.status(201).json({ id });
+            const token = jwt.sign(
+                {
+                    id: usuario.id,
+                    email: usuario.email
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: process.env.JWT_EXPIRES_IN
+                }
+            );
+
+            // evita expor senha
+            const { senha: _, ...usuarioSemSenha } = usuario;
+
+            return res.status(201).json({ 
+                mensagem: "Usuário cadastrado com sucesso",
+                token,
+                usuario: { id, ...usuarioSemSenha }
+             });
 
         } catch (e) {
             return res.status(500).json({
