@@ -36,7 +36,7 @@
     <div class="signin">
         <h1><b>Sign-In</b></h1>
 
-        <form action="http://localhost:3000/usuarios" method="post" class="formulario">
+        <form class="formulario" id="formSignin">
 
             <label for="nome">Nome Completo</label>
             <input type="text" name="nome" class="campoLogIn" placeholder=" Ex: Fulano de Coisa">
@@ -86,6 +86,34 @@
     const showHide = document.getElementById("showHide")
 
     showHide.addEventListener("click", senhaToggle)
+
+    // EVENTO SUBMIT CADASTRO
+    import { cadastrar } from "../js/fetchCadastro.js";
+    
+    const form = document.getElementById("formSignin");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const nome = document.querySelector('input[name="nome"]').value;
+        const genero = document.querySelector('input[name="genero"]:checked')?.value;
+        const email = document.querySelector('input[name="email"]').value;
+        const senha = document.querySelector('input[name="senha"]').value;
+        const termos = document.querySelector('input[name="termos"]').checked;
+        const receberEmails = document.querySelector('input[name="receberEmails"]').checked;
+
+        try {
+
+            await cadastrar(nome, genero, email, senha, termos, receberEmails);
+
+            window.location.href = ".././index.html";
+            
+        } catch (error) {
+            
+            alert(error.message);
+
+        }
+    })
 </script>
 
 </html>
