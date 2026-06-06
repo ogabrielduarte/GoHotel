@@ -18,12 +18,20 @@ async function listarHoteis() {
             <h3>${hotel.fantasia}</h3>
             <p>Localização: ${hotel.localizacao}</p>
 
-            <button class="update-btn" data-id="${hotel.id}">Fazer Reserva</button>
+            <button class="btn-reserva" data-id="${hotel.id}">Fazer Reserva</button>
         `;
         
         container.appendChild(card);
     });
+
+    container.addEventListener('click', async (event) => {
+        if (event.target.classList.contains('btn-reserva')) {
+            window.location.href = '../pages/reserva.html';
+        }
+    });
 }
+
+    
 
 listarHoteis();
 
