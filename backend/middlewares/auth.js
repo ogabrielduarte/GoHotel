@@ -1,4 +1,7 @@
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 function autenticar(req, res, next) {
     const authHeader = req.headers.authorization;
@@ -10,11 +13,12 @@ function autenticar(req, res, next) {
     }
 
     const token = authHeader.split(' ')[1];
-
+    const JWT_SECRET = process.env.JWT_SECRET;
+    
     try {
         const payload = jwt.verify(
             token,
-            SEGREDO_JWT
+            JWT_SECRET
         );
 
         req.usuario = payload;
