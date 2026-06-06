@@ -74,8 +74,8 @@ export class Usuario {
         const generosValidos = [
             'masculino',
             'feminino',
-            'não-binário',
-            'Prefiro não Informar'
+            'nao-binario',
+            'nao-informar'
         ];
 
         if (!generosValidos.includes(genero)) {
