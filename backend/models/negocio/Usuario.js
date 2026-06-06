@@ -138,7 +138,7 @@ export class Usuario {
 
     setTermos(termos) {
 
-        if (termos !== 'on') {
+        if (!termos) {
             throw new Error(
                 'É obrigatório aceitar o compartilhamento de dados'
             );
