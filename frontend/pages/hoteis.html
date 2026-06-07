@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
+
 <body>
+
+    <header class="header">
+        <a href="../index.html">
+            <img src="../assets/images/GHLOGO.png" class="home">
+        </a>
+
+        <nav class="nav">
+            <button class="redirect" id="usuarios">usuários</button>
+        </nav>
+
+        <i class="fa-regular fa-circle-user" id="perfil"></i>
+        <i class="fa-solid fa-sign-out" id="logout"></i>
+    </header>
+
+
     <h1>Hóteis</h1>
     <div id="container-hoteis">
         <!-- Cards dos hóteis serão inseridos aqui -->
@@ -14,4 +31,5 @@
 
     <script src="../js/listarHoteis.js"></script>
 </body>
+
 </html>
