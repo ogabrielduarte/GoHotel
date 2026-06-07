@@ -53,7 +53,7 @@ export class Usuario {
             throw new Error('Informe nome e sobrenome');
         }
 
-        this.#nome = nome;
+        this.#nome = nome.toUpperCase();
     }
 
     // GET-SET GÊNERO
