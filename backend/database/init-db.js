@@ -4,7 +4,7 @@ const db = new sqlite3.Database('./gohotel_db.db');
 function criarTabelas() {
     try {
         db.serialize(() => {
-            db.run(`
+            db.run(`                
             CREATE TABLE IF NOT EXISTS usuarios (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome TEXT NOT NULL,
@@ -41,11 +41,11 @@ function criarTabelas() {
 
                 db.run(`
                     CREATE TABLE IF NOT EXISTS pagamentos (
-                        id INTEGER PRIMARY KEY AUTOINCEMENT,
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
                         valor REAL NOT NULL,
                         status TEXT NOT NULL,
                         id_usuario INTEGER NOT NULL,
-                        id_hotel INTEGER NOT NULL
+                        id_hotel INTEGER NOT NULL,
 
                         FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
                         FOREIGN KEY (id_hotel) REFERENCES hoteis(id)
