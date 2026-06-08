@@ -44,20 +44,20 @@ const logoutButton = document.getElementById("logout");
 
 perfilPage.addEventListener("click", () => {
     if (token) {
-        location.href = './pages/user.html'
+        location.href = '../pages/user.html'
     } else {
         alert('Faça o log-in para acessar o perfil');
-        window.location.href = './pages/login.html';
+        window.location.href = '../pages/login.html';
     }
 });
 
 redirectReserva.addEventListener("click", () => {
     console.log('oeoe')
     if (token) {
-        window.location.href = './hoteis.html'
+        window.location.href = '../pages/hoteis.html'
     } else {
         alert('Faça o log-in para fazer reservas');
-        window.location.href = './pages/login.html';
+        window.location.href = '../pages/login.html';
     }
 });
 
