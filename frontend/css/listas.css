@@ -137,15 +137,59 @@ p {
     transition: ease 0.3s;
     text-shadow: 0 0 15px rgb(166, 247, 246);
 }
-
-
 div#container-usuarios {
     background-color: #edeff0;
+
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
 
     width: 80%;
-    height: 140px;
-    margin: 20px;
+    height: 100px;
+
+    margin: 120px;
     padding: 20px;
+
+    border-radius: 1rem;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: auto;
+}
+
+.btn-update{
+    width: 120px;
+    height: 40px;
+
+    border: none;
+    border-radius: 0.7rem;
+
+    background-color: #005aa3;
+    color: white;
+    font-size: 1rem;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-delete {
+    width: 120px;
+    height: 40px;
+
+    border: none;
+    border-radius: 0.7rem;
+
+    background-color: red;
+    color: white;
+    font-size: 1rem;
+
+    cursor: pointer;
+    transition: 0.3s;
 }

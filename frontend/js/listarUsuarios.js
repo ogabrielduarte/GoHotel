@@ -23,8 +23,10 @@ async function listarUsuarios() {
         <h3>${usuario.nome}</h3>
         <p>Email: ${usuario.email}</p>
 
-        <button class="btn-update">Atualizar</button>
-        <button class="btn-delete">Deletar</button>
+        <div class="buttons">
+            <button class="btn-update">Atualizar</button>
+            <button class="btn-delete">Deletar</button>
+        </div>
     `;
 
         container.appendChild(card);
