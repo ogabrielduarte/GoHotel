@@ -27,7 +27,7 @@ export class PagamentoController {
 
     }
 
-    async buscar(req, res) {
+    async buscarPorId(req, res) {
 
         try {
 
