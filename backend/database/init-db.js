@@ -38,6 +38,19 @@ function criarTabelas() {
                     FOREIGN KEY (id_hotel) REFERENCES hoteis (id)
                 );
                 `)
+
+                db.run(`
+                    CREATE TABLE IF NOT EXISTS pagamentos (
+                        id INTEGER PRIMARY KEY AUTOINCEMENT,
+                        valor REAL NOT NULL,
+                        status TEXT NOT NULL,
+                        id_usuario INTEGER NOT NULL,
+                        id_hotel INTEGER NOT NULL
+
+                        FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+                        FOREIGN KEY (id_hotel) REFERENCES hoteis(id)
+                    );
+                    `)
         })
     } catch (e) {
         console.error(e.message);

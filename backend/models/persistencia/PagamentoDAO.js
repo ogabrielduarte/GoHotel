@@ -14,15 +14,17 @@ export class PagamentoDAO {
 
             const sql = `
                 INSERT INTO pagamentos
-                (valor, status)
-                VALUES (?, ?)
+                (valor, status, id_usuario, id_hotel)
+                VALUES (?, ?, ?, ?)
             `;
 
             db.run(
                 sql,
                 [
                     pagamento.getValor(),
-                    pagamento.getStatus()
+                    pagamento.getStatus(),
+                    pagamento.getIdUsuario(),
+                    pagamento.getIdHotel()
                 ],
                 function (err) {
 
@@ -35,6 +37,36 @@ export class PagamentoDAO {
 
                     resolve(this.lastID);
 
+                }
+            );
+
+        });
+
+    }
+
+    listarTodos() {
+        const db = this.iniciar();
+
+        return new Promise((resolve, reject) => {
+
+            const sql = `
+                SELECT *
+                FROM pagamentos
+            `;
+
+            db.all(
+                sql,
+                [],
+                function (err, rows) {
+
+                    db.close();
+
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+
+                    resolve(rows);
                 }
             );
 

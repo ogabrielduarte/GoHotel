@@ -3,11 +3,21 @@ export class Pagamento {
     #id;
     #valor;
     #status;
+    #idUsuario;
+    #idHotel;
 
-    constructor({ id = null, valor, status }) {
+    constructor({
+        id = null,
+        valor,
+        status,
+        idUsuario,
+        idHotel
+    }) {
         this.#id = id;
         this.setValor(valor);
         this.setStatus(status);
+        this.setIdUsuario(idUsuario);
+        this.setIdHotel(id_hotel);
     }
 
     // GET-SET ID
@@ -62,6 +72,38 @@ export class Pagamento {
         }
 
         this.#status = status;
+    }
+
+    // GET-SET ID_USUARIO
+    getIdUsuario() {
+        return this.#idUsuario;
+    }
+
+    setIdUsuario(idUsuario) {
+
+        idUsuario = Number(idUsuario);
+
+        if (isNaN(idUsuario) || idUsuario <= 0) {
+            throw new Error('ID do usuário inválido');
+        }
+
+        this.#idUsuario = idUsuario;
+    }
+
+    // GET-SET ID_HOTEL
+    getIdHotel() {
+        return this.#idHotel;
+    }
+
+    setIdHotel(idHotel) {
+
+        idHotel = Number(idHotel);
+
+        if (isNaN(idHotel) || idHotel <= 0) {
+            throw new Error('ID do hotel inválido');
+        }
+
+        this.#idHotel = idHotel;
     }
 
 }
