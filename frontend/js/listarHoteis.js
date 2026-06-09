@@ -1,26 +1,34 @@
 const token = localStorage.getItem("token")
 
 async function listarHoteis() {
-    const resposta = await fetch('http://localhost:3000/hoteis');
+    const resposta = await fetch('http://localhost:3000/hoteis', {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
     
     const data = await resposta.json();
     
     const hoteis = data.hoteis;
 
-    const container = document.getElementById('container-hoteis');
+    const container = document.getElementById('container-geral');
 
     container.innerHTML = '';
 
     hoteis.forEach(hotel => {
+
         const card = document.createElement('div');
         
-        card.classList.add('card');
+        card.classList.add('card-geral');
         
         card.innerHTML = `
             <h3>${hotel.fantasia}</h3>
+
             <p>Localização: ${hotel.localizacao}</p>
 
-            <button class="btn-reserva" data-id="${hotel.id}">Fazer Reserva</button>
+            <div class="buttons">
+                <button class="btn-reserva" data-id="${hotel.id}">Fazer Reserva</button>
+            </div>
         `;
         
         container.appendChild(card);
@@ -69,4 +77,4 @@ if(!token) {
         location.href = './index.html';
     });
 
-setInterval(listarHoteis, 5000);
+setInterval(listarHoteis, 30000);
