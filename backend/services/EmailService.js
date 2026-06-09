@@ -22,11 +22,11 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-export async function sendEmail(destinatario, assunto, mensagem) {
+export async function sendEmail(to, subject, html) {
     return await transporter.sendMail({
         from: process.env.MAIL_USERNAME,
-        to: destinatario,
-        subject: assunto,
-        html: mensagem
+        to,
+        subject,
+        html
     });
 }
