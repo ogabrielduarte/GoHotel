@@ -12,7 +12,7 @@ async function listarUsuarios() {
 
     const usuarios = data.usuarios;
 
-    const container = document.getElementById('container-usuarios');
+    const container = document.getElementById('container-geral');
 
     container.innerHTML = '';
 
@@ -20,7 +20,7 @@ async function listarUsuarios() {
 
         const card = document.createElement('div');
 
-        card.classList.add('card-usuario');
+        card.classList.add('card-geral');
 
         card.innerHTML = `
             <h3>${usuario.nome}</h3>
@@ -79,4 +79,4 @@ logoutButton.addEventListener("click", () => {
 
 });
 
-setInterval(listarUsuarios, 5000);
+setInterval(listarUsuarios, 30000);
