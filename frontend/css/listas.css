@@ -140,7 +140,7 @@ p {
 
 /* CONTAINER GERAL */
 
-#container-usuarios {
+#container-geral {
     width: 100%;
 
     display: flex;
@@ -155,13 +155,13 @@ p {
 
 /* CARD INDIVIDUAL */
 
-.card-usuario {
+.card-geral {
     background: rgba(226, 226, 226, 0.92);
 
     border: solid rgba(166, 247, 246, 0.25) 2px;
 
     width: 80%;
-    min-height: 160px;
+    min-height: 140px;
 
     display: flex;
     flex-direction: column;
@@ -184,7 +184,7 @@ p {
     transition: 0.3s ease;
 }
 
-.card-usuario:hover {
+.card-geral:hover {
     transform: translateY(-3px);
 
     box-shadow:
@@ -194,14 +194,14 @@ p {
 
 /* TEXOS */
 
-.card-usuario h3 {
+.card-geral h3 {
     margin: 0;
 
     color: rgb(15, 40, 52);
     font-size: 1.7rem;
 }
 
-.card-usuario p {
+.card-geral p {
     margin-top: 10px;
 
     color: rgb(40, 65, 75);
@@ -215,13 +215,14 @@ p {
     justify-content: flex-end;
     gap: 12px;
 
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
 /* BOTÕES */
 
 .btn-update,
-.btn-delete {
+.btn-delete,
+.btn-reserva {
     width: 130px;
     height: 42px;
 
@@ -269,4 +270,22 @@ p {
 
     box-shadow:
         0 0 15px rgba(255, 0, 0, 0.35);
+}
+
+.btn-reserva {
+    width: 150px;
+    height: 60px;
+    background: linear-gradient(
+        135deg,
+        rgb(0, 155, 163),
+        rgb(0, 204, 255)
+    );
+
+}
+
+.btn-reserva:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 15px rgba(0, 132, 255, 0.4);
 }
