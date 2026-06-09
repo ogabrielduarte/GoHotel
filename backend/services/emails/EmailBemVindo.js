@@ -18,10 +18,7 @@ export async function criarMensagemBoasVindas(nome) {
 
     // lê arquivo HTML
     let html = await fs.readFile(caminhoHtml, 'utf-8');
-
-    // substitui placeholders
-    html = html.replace('{{nome}}', nome);
-
+    
     // retorna objeto pronto
     return {
         subject: 'Bem-vindo!',
