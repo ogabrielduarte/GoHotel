@@ -37,19 +37,7 @@ async function listarHoteis() {
     container.addEventListener('click', (event) => {
 
         if (event.target.classList.contains('btn-reserva')) {
-
-            if (token) {
-
-                const id = event.target.dataset.id;
-
-                window.location.href = `reserva.html?id=${id}`;
-
-            } else {
-
-                alert('Faça o log-in para fazer reservas');
-
-                window.location.href = '../pages/login.html';
-            }
+window.location.href = `reserva.html?id=${id}`;
         }
     });
 }
