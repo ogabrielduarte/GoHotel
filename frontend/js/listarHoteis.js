@@ -6,9 +6,9 @@ async function listarHoteis() {
             Authorization: `Bearer ${token}`
         }
     });
-    
+
     const data = await resposta.json();
-    
+
     const hoteis = data.hoteis;
 
     const container = document.getElementById('container-geral');
@@ -18,63 +18,75 @@ async function listarHoteis() {
     hoteis.forEach(hotel => {
 
         const card = document.createElement('div');
-        
+
         card.classList.add('card-geral');
-        
+
         card.innerHTML = `
             <h3>${hotel.fantasia}</h3>
 
             <p>Localização: ${hotel.localizacao}</p>
 
             <div class="buttons">
-                <button class="btn-reserva" data-id="${hotel.id}">Fazer Reserva</button>
+                <button class="btn-reserva" id="reserva" data-id="${hotel.id}">Fazer Reserva</button>
             </div>
         `;
-        
+
         container.appendChild(card);
     });
 
-    container.addEventListener('click', async (event) => {
+    container.addEventListener('click', (event) => {
+
         if (event.target.classList.contains('btn-reserva')) {
-            window.location.href = '../pages/reserva.html';
+
+            if (token) {
+
+                const id = event.target.dataset.id;
+
+                window.location.href = `reserva.html?id=${id}`;
+
+            } else {
+
+                alert('Faça o log-in para fazer reservas');
+
+                window.location.href = '../pages/login.html';
+            }
         }
     });
 }
 
-    
-
 listarHoteis();
 
-if(!token) {
-        document.getElementById('logout').style.display = 'none';
+if (!token) {
+    document.getElementById('logout').style.display = 'none';
+}
+
+const perfilPage = document.getElementById("perfil");
+const redirectReserva = document.getElementById("reserva");
+console.log(redirectReserva);
+const logoutButton = document.getElementById("logout");
+
+perfilPage.addEventListener("click", () => {
+    if (token) {
+        location.href = './pages/user.html'
+    } else {
+        alert('Faça o log-in para acessar o perfil');
+        window.location.href = '../pages/login.html';
     }
+});
 
-    const perfilPage = document.getElementById("perfil");
-    const redirectReserva = document.getElementById("reserva");
-    const logoutButton = document.getElementById("logout");
+redirectReserva.addEventListener("click", () => {
+    if (token) {
+        location.href = '../pages/hoteis.html'
+    } else {
+        alert('Faça o log-in para fazer reservas');
+        window.location.href = '../pages/login.html';
+    }
+});
 
-    perfilPage.addEventListener("click", () => {
-        if (token) {
-            location.href = './pages/user.html'
-        } else {
-            alert('Faça o log-in para acessar o perfil');
-            window.location.href = '../pages/login.html';
-        }
-    });
-
-    redirectReserva.addEventListener("click", () => {
-        if (token) {
-            location.href = '../pages/hoteis.html'
-        } else {
-            alert('Faça o log-in para fazer reservas');
-            window.location.href = '../pages/login.html';
-        }
-    });
-
-    logoutButton.addEventListener("click", () => {
-        localStorage.removeItem('token');
-        alert('Deslogado com sucesso!');
-        location.href = './index.html';
-    });
+logoutButton.addEventListener("click", () => {
+    localStorage.removeItem('token');
+    alert('Deslogado com sucesso!');
+    location.href = './index.html';
+});
 
 setInterval(listarHoteis, 30000);
