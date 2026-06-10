@@ -17,7 +17,7 @@
         <a href="./index.html"> <!-- pra recarregar a página -->
             <img src="./assets/images/GHLOGO.png" class="home">
         </a>
-        
+
         <nav class="nav">
             <button class="redirect" id="reserva">reserve aqui</button>
             <button class="redirect" id="usuarios">usuários</button>
@@ -31,10 +31,10 @@
 <script type="module">
     import { indexBG } from "./pages/modulos.js"
     indexBG()//função pro fundo alterar
-    
+
     const token = localStorage.getItem('token');
 
-    if(!token) {
+    if (!token) {
         document.getElementById('logout').style.display = 'none';
     }
 
@@ -71,10 +71,13 @@
     });
 
     logoutButton.addEventListener("click", () => {
-        localStorage.removeItem('token');
-        alert('Deslogado com sucesso!');
-        location.href = './index.html';
+        if (confirm('Você quer encerrar a sessão?')) {
+            localStorage.removeItem('token');
+            alert('Deslogado com sucesso!');
+            location.href = './index.html';
+        }
     });
+
 </script>
 
 </html>

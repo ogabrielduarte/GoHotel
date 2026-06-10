@@ -20,6 +20,7 @@
         <!-- pensando se seria interessante colocar a opção de pesquisar mas acho que não temos tempo pra isso -->
 
         <i class="fa-regular fa-circle-user" id="perfil"></i>
+        <i class="fa-solid fa-sign-out" id="logout"></i>
 
     </header>
 
@@ -33,6 +34,7 @@
     </div>
 
 </body>
+
 <script type="module">
     import { verificarLogin } from "./modulos.js"
     document.addEventListener("DOMContentLoaded", verificarLogin) // verificar se o login realmente ta feito
@@ -40,12 +42,23 @@
 
     perfilPage.addEventListener("click", () => {
         if (token) {
-            location.href = './user.html'
+            window.location.href = './user.html'
         } else {
             alert('Faça o log-in para acessar o perfil')
             location.href = './login.html'
         }
     });
+
+    const logoutButton = document.querySelector('.fa-sign-out')
+    
+    logoutButton.addEventListener("click", () => {
+        if (confirm('Você quer encerrar a sessão?')) {
+            localStorage.removeItem('token');
+            alert('Deslogado com sucesso!');
+            location.href = '../index.html';
+        }
+    });
+
 </script>
 
 </html>

@@ -6,6 +6,7 @@
     <meta name="author" content="Gabriel S. Duarte, Agatha Marinho Santos">
     <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <title>Perfil</title>
@@ -21,7 +22,7 @@
             <button class="redirect" id="reserva">faça sua reserva!</button>
         </nav>
 
-        <i class="fa-regular fa-circle-user" id="perfil"></i>
+        <i class="fa-solid fa-sign-out" id="logout"></i>
     </header>
 </body>
 <script type="module">
@@ -29,10 +30,20 @@
     document.addEventListener("DOMContentLoaded", verificarLogin) // verificar se o login realmente ta feito
 
     const reserva = document.getElementById("reserva");
+    const logoutButton = document.querySelector(".fa-sign-out")
 
     reserva.addEventListener("click", () => {
         window.location.href = "./hoteis.html"
     });
+
+    logoutButton.addEventListener("click", () => {
+        if (confirm('Você quer encerrar a sessão?')) {
+            localStorage.removeItem('token');
+            alert('Deslogado com sucesso!');
+            location.href = './index.html';
+        }
+    });
+
 </script>
 
 </html>
