@@ -41,10 +41,8 @@ async function listarUsuarios() {
         container.appendChild(card);
     });
 
-    // PEGA TODOS OS BOTÕES DELETE
     const deleteButtons = document.querySelectorAll('.btn-delete');
 
-    // ADICIONA EVENTO EM CADA UM
     deleteButtons.forEach(button => {
 
         button.addEventListener('click', async () => {
@@ -72,6 +70,12 @@ listarUsuarios();
 if (!token) {
     document.getElementById('logout').style.display = 'none';
 }
+
+const nameElement = document.getElementById('name');
+
+    if (token && nameElement) {
+        nameElement.innerHTML = `${localStorage.getItem('nome')}`;
+    }
 
 const perfilPage = document.getElementById("perfil");
 const redirectReserva = document.getElementById("reserva");
