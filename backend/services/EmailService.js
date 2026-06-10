@@ -10,8 +10,6 @@ require('dotenv').config({ path: resolve(__dirname, '../.env') });
 
 import nodemailer from 'nodemailer';
 
-console.log("MAIL:", process.env.MAIL_USERNAME);
-
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
