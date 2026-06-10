@@ -22,8 +22,11 @@
             <button class="redirect" id="reserva">reserve aqui</button>
             <button class="redirect" id="usuarios">usuários</button>
         </nav>
+        <div class="profile">
+            <p id="name"></p>
+            <i class="fa-regular fa-circle-user" id="perfil"></i>
+        </div>
 
-        <i class="fa-regular fa-circle-user" id="perfil"></i>
         <i class="fa-solid fa-sign-out" id="logout"></i>
     </header>
     <div class="Itext">
@@ -43,6 +46,13 @@
         document.getElementById('logout').style.display = 'none';
     }
 
+    const nameElement = document.getElementById('name');
+
+    if (token && nameElement) {
+        nameElement.innerHTML = `${localStorage.getItem('nome')}`;
+    }
+
+
     const perfilPage = document.getElementById("perfil");
     const redirectReserva = document.getElementById("reserva");
     const redirectUsuarios = document.getElementById("usuarios");
@@ -60,6 +70,8 @@
     redirectReserva.addEventListener("click", () => {
         if (token) {
             location.href = './pages/hoteis.html'
+
+            const nome = localStorage.getItem()
         } else {
             alert('Faça o log-in para fazer reservas');
             window.location.href = './pages/login.html';

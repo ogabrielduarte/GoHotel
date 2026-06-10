@@ -300,9 +300,8 @@ input.subCadastro:hover {
     font-size: 1.5rem;
     color: #fcfeff;
 
-    background: radial-gradient(
-        rgb(51, 151, 151),
-        rgb(33, 123, 126) 60%);
+    background: radial-gradient(rgb(51, 151, 151),
+            rgb(33, 123, 126) 60%);
 
     border: solid, 3px, #fcfeffc4;
     border-radius: 5rem;
@@ -325,6 +324,18 @@ input.subCadastro:hover {
     text-shadow: 0 0 15px rgb(166, 247, 246);
 }
 
+div.profile {
+    color: #ffffff;
+    font-size: 1.5rem;
+
+    align-items: center;
+
+    position: relative;
+    right: 30px;
+
+    display: flex;
+}
+
 .fa-circle-user {
     flex: 0 0 auto;
 
@@ -344,6 +355,7 @@ input.subCadastro:hover {
     text-shadow: 0 0 7px aliceblue;
     cursor: default;
 }
+
 .Itext:hover {
     text-shadow: 0 0 15px aliceblue;
     transition: ease-in-out 0.3s;
@@ -358,6 +370,7 @@ h1#Ititulo {
     font-size: 5rem;
     z-index: 5;
 }
+
 p#Isub {
     color: aliceblue;
     position: fixed;

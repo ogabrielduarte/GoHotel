@@ -8,12 +8,14 @@ export async function login(email, senha) {
     });
 
     const data = await response.json();
+    console.log(data)
 
     if (!response.ok) {
         throw new Error(data.erro);
     }
 
     localStorage.setItem("token", data.token);
+    localStorage.setItem("nome", data.usuario.nome);
 
     return data;
 }
