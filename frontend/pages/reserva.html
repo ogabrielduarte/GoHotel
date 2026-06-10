@@ -6,59 +6,81 @@
     <meta name="author" content="Gabriel S. Duarte, Agatha Marinho Santos">
     <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <link rel="shortcut icon"
+        href="../assets/images/favGO.ico"
+        type="image/x-icon">
+
     <link rel="stylesheet" href="../css/style.css">
+
     <title>Faça sua reserva! | GoHotel</title>
 </head>
 
 <body>
+
     <header class="header">
-        <a href="../index.html"> <!-- pra recarregar a página -->
+
+        <a href="../index.html">
             <img src="../assets/images/GHLOGO.png" class="home">
         </a>
-        <!-- pensando se seria interessante colocar a opção de pesquisar mas acho que não temos tempo pra isso -->
 
         <i class="fa-regular fa-circle-user" id="perfil"></i>
         <i class="fa-solid fa-sign-out" id="logout"></i>
 
     </header>
 
-    <div class="card-hotel">
-        <!-- Aqui ficará o card do hotel selecionado para a reserva -->
-        <!-- haverá um botão de confirmação de reserva que, quando clicado, revelará o popup de pagamento -->
+    <div class="card-reserva">
+        <!-- Card do hotel -->
     </div>
 
     <div class="pagamento">
-        <!-- Aqui ficará a seção de pagamento -->
+        <!-- Pagamento -->
     </div>
 
+    <script type="module">
+
+        const params = new URLSearchParams(window.location.search);
+
+        const id = params.get('id');
+
+        const response = await fetch(`http://localhost:3000/hoteis/${id}`, {
+            method: 'GET'
+        });
+
+        const hotelData = await response.json();
+
+        console.log(hotelData);
+
+        function appendHotel(hotelData) {
+
+            const cardReserva = document.createElement('div');
+
+            cardReserva.classList.add('card');
+
+            const hotelNome = document.createElement('h2');
+
+            hotelNome.textContent = hotelData.fantasia;
+
+            const hotelDescricao = document.createElement('p');
+
+            hotelDescricao.textContent = hotelData.descricao;
+
+            cardReserva.appendChild(hotelNome);
+
+            cardReserva.appendChild(hotelDescricao);
+
+            document
+                .querySelector('.card-reserva')
+                .appendChild(cardReserva);
+        }
+
+        appendHotel(hotelData);
+
+    </script>
+
 </body>
-
-<script type="module">
-    import { verificarLogin } from "./modulos.js"
-    document.addEventListener("DOMContentLoaded", verificarLogin) // verificar se o login realmente ta feito
-    const perfilPage = document.getElementById("perfil")
-
-    perfilPage.addEventListener("click", () => {
-        if (token) {
-            window.location.href = './user.html'
-        } else {
-            alert('Faça o log-in para acessar o perfil')
-            location.href = './login.html'
-        }
-    });
-
-    const logoutButton = document.querySelector('.fa-sign-out')
-    
-    logoutButton.addEventListener("click", () => {
-        if (confirm('Você quer encerrar a sessão?')) {
-            localStorage.removeItem('token');
-            alert('Deslogado com sucesso!');
-            location.href = '../index.html';
-        }
-    });
-
-</script>
 
 </html>
