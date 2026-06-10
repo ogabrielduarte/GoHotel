@@ -154,10 +154,10 @@ export class Usuario {
 
     setReceberEmails(receberEmails) {
 
-        if (receberEmails === 'on') {
-            receberEmails = 1;
+        if (!receberEmails) {
+            receberEmails = 0
         } else {
-            receberEmails = 0;
+            receberEmails = 1
         }
 
         this.#receberEmails = receberEmails;
