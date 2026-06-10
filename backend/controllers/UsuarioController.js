@@ -1,6 +1,9 @@
 import { Usuario } from "../models/negocio/Usuario.js";
 import { UsuarioDAO } from "../models/persistencia/UsuarioDAO.js";
 
+import { criarMensagemBemVindo } from "../services/emails/EmailBemVindo.js";
+import { sendEmail } from "../services/EmailService.js";
+
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -15,9 +18,10 @@ export class UsuarioController {
 
             const token = jwt.sign(
                 {
-                    id: usuario.id,
+                    id,
                     email: usuario.email
                 },
+
                 process.env.JWT_SECRET,
                 {
                     expiresIn: process.env.JWT_EXPIRES_IN
@@ -27,11 +31,16 @@ export class UsuarioController {
             // evita expor senha
             const { senha: _, ...usuarioSemSenha } = usuario;
 
-            return res.status(201).json({ 
+            if (usuario.getReceberEmails() === 1) {
+                let mail = await criarMensagemBemVindo();
+                await sendEmail(usuario.getEmail(), mail.subject, mail.html);
+            }
+
+            return res.status(201).json({
                 mensagem: "Usuário cadastrado com sucesso",
                 token,
                 usuario: { id, ...usuarioSemSenha }
-             });
+            });
 
         } catch (e) {
             return res.status(500).json({
