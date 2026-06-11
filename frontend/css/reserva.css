@@ -15,6 +15,7 @@ body {
 body {
     display: flex;
     min-height: 100vh;
+    align-items: center;
 }
 
 p {
@@ -138,4 +139,42 @@ div.profile {
     color: #fcfeff;
     transition: ease 0.3s;
     text-shadow: 0 0 15px rgb(166, 247, 246);
+}
+
+div.card-reserva {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+
+    margin: 0 auto;
+    margin-top: 5%;
+
+    width: 1200px;
+    height: 500px;
+
+    background: rgba(226, 226, 226, 0.92);
+
+    border: solid rgba(166, 247, 246, 0.25) 2px;
+
+    padding: 30px;
+}
+
+img.hotel-img {
+    display: flex;
+    
+    width: 700px;
+    height: 525px;
+
+    object-fit: cover;
+}
+
+div.hotel-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.hotel-titulo {
+    font-size: 3rem;
 }
