@@ -8,13 +8,14 @@ export async function cadastrar(nome, genero, email, senha, termos, receberEmail
     });
 
     const data = await response.json();
+    console.log(data);
 
     if (!response.ok) {
         throw new Error(data.erro);
     }
 
     localStorage.setItem("token", data.token);
-    localStorage.setItem("nome", data.usuario.nome);
+    localStorage.setItem("nome", data.usuario.getNome());
 
     return data;
 }

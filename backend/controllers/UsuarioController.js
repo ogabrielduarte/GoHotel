@@ -28,8 +28,13 @@ export class UsuarioController {
                 }
             );
 
-            // evita expor senha
-            const { senha: _, ...usuarioSemSenha } = usuario;
+            const usuarioSemSenha = {
+                id,
+                nome: usuario.getNome(),
+                email: usuario.getEmail(),
+                genero: usuario.getGenero(),
+                receberEmails: usuario.getReceberEmails()
+            };
 
             if (usuario.getReceberEmails() === 1) {
                 let mail = await criarMensagemBemVindo();
@@ -39,7 +44,7 @@ export class UsuarioController {
             return res.status(201).json({
                 mensagem: "Usuário cadastrado com sucesso",
                 token,
-                usuario: { id, ...usuarioSemSenha }
+                usuario: usuarioSemSenha
             });
 
         } catch (e) {
