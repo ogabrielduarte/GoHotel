@@ -73,9 +73,9 @@ if (!token) {
 
 const nameElement = document.getElementById('name');
 
-    if (token && nameElement) {
-        nameElement.innerHTML = `${localStorage.getItem('nome')}`;
-    }
+if (token && nameElement) {
+    nameElement.innerHTML = `${localStorage.getItem('nome')}`;
+}
 
 const perfilPage = document.getElementById("perfil");
 const redirectReserva = document.getElementById("reserva");
@@ -106,6 +106,7 @@ redirectReserva.addEventListener("click", () => {
 logoutButton.addEventListener("click", () => {
     if (confirm('Você quer encerrar a sessão?')) {
         localStorage.removeItem('token');
+        localStorage.removeItem('nome');
         alert('Deslogado com sucesso!');
         location.href = '../index.html';
     }

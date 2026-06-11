@@ -82,6 +82,7 @@ redirectReserva.addEventListener("click", () => {
 
 logoutButton.addEventListener("click", () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('nome');
     alert('Deslogado com sucesso!');
     location.href = './index.html';
 });

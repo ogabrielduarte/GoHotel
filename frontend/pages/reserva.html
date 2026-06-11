@@ -118,6 +118,17 @@
 
         carregarHotel();
 
+        const logoutButton = document.getElementById("logout");
+
+        logoutButton.addEventListener("click", () => {
+            if (confirm('Você quer encerrar a sessão?')) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('nome');
+                alert('Deslogado com sucesso!');
+                location.href = '../index.html';
+            }
+        });
+
     </script>
 
 </body>
