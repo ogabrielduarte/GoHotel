@@ -31,10 +31,13 @@
 
     <div class="card-reserva">
         <!-- Card do hotel -->
-    </div>
 
-    <div class="pagamento">
-        <!-- Pagamento -->
+        <div class="formReserva">
+            <form id="datas-reserva">
+                <input type="date" name="dataEntrada" id="entrada">
+                <input type="date" name="dataSaida" id="saida">
+            </form>
+        </div>
     </div>
 
     <script type="module">
@@ -92,11 +95,18 @@
             hotelTitulo.textContent = hotel.fantasia;
 
 
+            const hotelImg = document.createElement('img');
+
+            hotelImg.classList.add('hotel-img');
+
+            hotelImg.src = hotel.imagem;
+
+
             const hotelDescricao = document.createElement('p');
 
             hotelDescricao.classList.add('hotel-descricao');
 
-            hotelDescricao.textContent = "Um hotel show de bola para <br> você e toda a sua família ;-)";
+            hotelDescricao.textContent = hotel.descricao;
 
 
             const hotelLocalizacao = document.createElement('p');
@@ -112,11 +122,15 @@
 
             hotelCard.appendChild(hotelLocalizacao);
 
+            hotelCard.appendChild(hotelImg);
+
 
             reservaContainer.appendChild(hotelCard);
         }
 
         carregarHotel();
+
+        document.getElementById('name').textContent = localStorage.getItem('nome');
 
         const logoutButton = document.getElementById("logout");
 
