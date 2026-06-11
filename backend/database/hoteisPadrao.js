@@ -9,7 +9,7 @@ const hoteis = [
         localizacao: 'Maceió, Brasil',
         descricao: 'A melhor casa de praia do Caribe Nordestino',
         qtd_quartos: 20,
-        imagem: '/frontend/assets/images/hoteis-padrao/pratagy.jpg'
+        imagem: 'https://go-hotel.vercel.app/assets/images/hoteis-padrao/pratagy.jpg'
     },
 
     {
@@ -18,7 +18,7 @@ const hoteis = [
         localizacao: 'Bree, Middle-earth',
         descricao: 'Uma casa agradável a olhos familiares',
         qtd_quartos: 20,
-        imagem: '/frontend/assets/images/hoteis-padrao/ponei.jpg'
+        imagem: 'https://go-hotel.vercel.app/assets/images/hoteis-padrao/ponei.jpg'
     },
 
     {
@@ -27,7 +27,7 @@ const hoteis = [
         localizacao: 'Budapest, Hungria',
         descricao: 'Ainda resta uma centelha fraca de civilização neste matadouro selvagem que já foi conhecido como humanidade.',
         qtd_quartos: 100,
-        imagem: '/frontend/assets/images/hoteis-padrao/thegreat.jpg'
+        imagem: 'https://go-hotel.vercel.app/assets/images/hoteis-padrao/thegreat.jpg'
     },
 
     {
@@ -36,7 +36,7 @@ const hoteis = [
         localizacao: 'England, United Kingdom',
         descricao: 'NÃO PERCA A SUA TOALHA',
         qtd_quartos: 42,
-        imagem: '/frontend/assets/images/hoteis-padrao/prefect.jpg'
+        imagem: 'https://go-hotel.vercel.app/assets/images/hoteis-padrao/prefect.jpg'
     },
 
     {
@@ -45,7 +45,7 @@ const hoteis = [
         localizacao: 'Rio de Janeiro, Brasil',
         descricao: 'Sempre excelente',
         qtd_quartos: 200,
-        imagem: '/frontend/assets/images/hoteis-padrao/palace.jpg'
+        imagem: 'https://go-hotel.vercel.app/assets/images/hoteis-padrao/palace.jpg'
     }
 ];
 
