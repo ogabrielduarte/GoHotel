@@ -14,6 +14,7 @@ export async function login(email, senha) {
     }
 
     localStorage.setItem("token", data.token);
+    localStorage.setItem("id", data.usuario.id);
     localStorage.setItem("nome", data.usuario.nome);
 
     return data;

@@ -14,7 +14,8 @@ export async function cadastrar(nome, genero, email, senha, termos, receberEmail
     }
 
     localStorage.setItem("token", data.token);
-    localStorage.setItem("nome", data.usuario.nome);
+    localStorage.setItem("id", data.id);
+    localStorage.setItem("nome", data.data.nome);
 
     return data;
 }
