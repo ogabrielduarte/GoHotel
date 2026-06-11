@@ -21,8 +21,10 @@ function criarTabelas() {
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     cnpj INTEGER UNIQUE NOT NULL,
                     fantasia TEXT NOT NULL,
-                    localizacao TEXT,
-                    qtd_quartos INTEGER NOT NULL
+                    localizacao TEXT NOT NULL,
+                    descricao TEXT NOT NULL,
+                    qtd_quartos INTEGER NOT NULL,
+                    imagem TEXT NOT NULL
                 );
                 `)
 
