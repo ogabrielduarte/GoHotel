@@ -31,13 +31,6 @@
 
     <div class="card-reserva">
         <!-- Card do hotel -->
-
-        <div class="formReserva">
-            <form id="datas-reserva">
-                <input type="date" name="dataEntrada" id="entrada">
-                <input type="date" name="dataSaida" id="saida">
-            </form>
-        </div>
     </div>
 
     <script type="module">
@@ -83,49 +76,81 @@
 
         function criarCardHotel(hotel) {
 
-            const hotelCard = document.createElement('div');
+            const hotelCard = document.querySelector('.card-reserva')
 
-            hotelCard.classList.add('hotel-card-reserva');
-
-
+           // Título do hotel 
             const hotelTitulo = document.createElement('h2');
-
             hotelTitulo.classList.add('hotel-titulo');
-
             hotelTitulo.textContent = hotel.fantasia;
 
-
+            // Imagem do hotel
             const hotelImg = document.createElement('img');
-
             hotelImg.classList.add('hotel-img');
-
             hotelImg.src = hotel.imagem;
 
-
+            // Descrição do hotel
             const hotelDescricao = document.createElement('p');
-
             hotelDescricao.classList.add('hotel-descricao');
-
             hotelDescricao.textContent = hotel.descricao;
 
-
+            // Localização do hotel
             const hotelLocalizacao = document.createElement('p');
-
             hotelLocalizacao.classList.add('hotel-localizacao');
-
             hotelLocalizacao.textContent = `Localização: ${hotel.localizacao}`;
 
+            // DIV CONTAINER DE FORM RESERVA
+            const formReserva = document.createElement('div');
+            formReserva.classList.add('formReserva');
 
-            hotelCard.appendChild(hotelTitulo);
+            // FORM RESERVA PROPRIAMENTE DITO
+            const form = document.createElement('form');
+            form.id = 'datas-reserva';
 
-            hotelCard.appendChild(hotelDescricao);
+            // LABEL DATA DE ENTRADA    
+            const labelEntrada = document.createElement('label');
+            labelEntrada.htmlFor = 'entrada';
+            labelEntrada.textContent = 'Data de Entrada:';
 
-            hotelCard.appendChild(hotelLocalizacao);
+            // INPUT PARA DATA DE ENTRADA
+            const inputEntrada = document.createElement('input');
+            inputEntrada.type = 'date';
+            inputEntrada.name = 'dataEntrada';
+            inputEntrada.id = 'entrada';
+
+            // LABEL DATA DE SAÍDA
+            const labelSaida = document.createElement('label');
+            labelSaida.htmlFor = 'saida';
+            labelSaida.textContent = 'Data de Saída:';
+
+            // INPUT PARA DATA DE SAÍDA
+            const inputSaida = document.createElement('input');
+            inputSaida.type = 'date';
+            inputSaida.name = 'dataSaida';
+            inputSaida.id = 'saida';
+
+            // BOTÃO SEND
+            const buttonSubmit = document.createElement('button');
+            buttonSubmit.type = 'submit';
+            buttonSubmit.textContent = 'Enviar';
+
+            form.appendChild(labelEntrada);
+            form.appendChild(inputEntrada);
+            form.appendChild(labelSaida);
+            form.appendChild(inputSaida);
+            form.appendChild(buttonSubmit);
+            formReserva.appendChild(form);
+
+            const hotelInfo = document.createElement('div');
+
+            hotelInfo.classList.add('hotel-info');
+
+            hotelInfo.appendChild(hotelTitulo);
+            hotelInfo.appendChild(hotelDescricao);
+            hotelInfo.appendChild(hotelLocalizacao);
+            hotelInfo.appendChild(formReserva);
 
             hotelCard.appendChild(hotelImg);
-
-
-            reservaContainer.appendChild(hotelCard);
+            hotelCard.appendChild(hotelInfo);
         }
 
         carregarHotel();
