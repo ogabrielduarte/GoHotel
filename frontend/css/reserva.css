@@ -1,0 +1,141 @@
+@font-face {
+    font-family: Poppins;
+    src: url('../assets/fonts/Poppins-Regular.ttf');
+}
+
+html,
+body {
+    font-family: Poppins;
+    min-width: 700px;
+    height: 100%;
+    margin: 0;
+    background: transparent;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+}
+
+p {
+    overflow-wrap: break-all;
+}
+
+/* foco no index */
+
+.header {
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    background: linear-gradient(100deg,
+            rgba(29, 91, 120, 1),
+            rgba(6, 148, 148, 1) 40%,
+            rgb(69, 191, 197) 70%,
+            rgba(6, 148, 148, 1),
+            rgba(29, 91, 120, 1));
+}
+
+.header>a {
+    flex: 0 0 auto;
+}
+
+.home {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.home:hover {
+    transition: ease 0.3s;
+    box-shadow: 0 0 15px rgb(166, 247, 246);
+}
+
+.nav {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+}
+
+.redirect {
+    font-family: Poppins;
+    font-size: 1.5rem;
+    color: #fcfeff;
+
+    background: radial-gradient(rgb(51, 151, 151),
+            rgb(33, 123, 126) 60%);
+
+    border: solid, 3px, #fcfeffc4;
+    border-radius: 5rem;
+
+    width: 320px;
+    max-width: 60vw;
+    height: 70px;
+
+    margin: 0 15px 0 15px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.redirect:hover {
+    opacity: 0.87;
+    font-size: 1.45rem;
+
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 15px rgb(166, 247, 246);
+}
+
+div.profile {
+    color: #ffffff;
+    font-size: 1.5rem;
+
+    align-items: center;
+
+    position: relative;
+    right: 30px;
+
+    display: flex;
+}
+
+.fa-circle-user {
+    flex: 0 0 auto;
+
+    color: #fcfeff;
+    font-size: 3rem;
+
+    cursor: pointer;
+}
+
+.fa-circle-user:hover {
+    color: #fcfeff;
+    transition: ease 0.3s;
+    text-shadow: 0 0 15px rgb(166, 247, 246);
+}
+
+.fa-sign-out {
+    flex: 0 0 auto;
+
+    color: #fcfeff;
+    font-size: 2rem;
+
+    cursor: pointer;
+}
+
+.fa-sign-out:hover {
+    color: #fcfeff;
+    transition: ease 0.3s;
+    text-shadow: 0 0 15px rgb(166, 247, 246);
+}
