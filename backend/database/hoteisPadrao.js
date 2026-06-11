@@ -9,7 +9,7 @@ const hoteis = [
         localizacao: 'Maceió, Brasil',
         descricao: 'A melhor casa de praia do Caribe Nordestino',
         qtd_quartos: 20,
-        imagem: '../../frontend/assets/images/hoteis-padrao/thegreat.jpg'
+        imagem: '../../frontend/assets/images/hoteis-padrao/pratagy.jpg'
     },
 
     {
