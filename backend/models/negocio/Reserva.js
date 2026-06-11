@@ -40,11 +40,13 @@ export class Reserva {
             throw new Error('Data inválida')
         }
 
-        let regexData = /^\d{2}\/\d{2}\/\d{4}$/;
+        const regexData = /^\d{4}-\d{2}-\d{2}$/
 
         if (!regexData.test(data)) {
             throw new Error('Formato de data inválido')
         }
+
+        this.#dataEntrada = dataEntrada
     }
 
     // GET-SET DATA_SAIDA
@@ -61,11 +63,13 @@ export class Reserva {
             throw new Error('Data inválida')
         }
 
-        let regexData = /^\d{2}\/\d{2}\/\d{4}$/;
+        const regexData = /^\d{4}-\d{2}-\d{2}$/
 
         if (!regexData.test(data)) {
             throw new Error('Formato de data inválido')
         }
+
+        this.#dataSaida = dataSaida
     }
 
     // GET-SET ID_USUARIO
