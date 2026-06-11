@@ -7,14 +7,9 @@
     <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
-    <link rel="shortcut icon"
-        href="../assets/images/favGO.ico"
-        type="image/x-icon">
-
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/reserva.css">
 
     <title>Faça sua reserva! | GoHotel</title>
 </head>
@@ -44,40 +39,82 @@
 
         const params = new URLSearchParams(window.location.search);
 
-        const id = params.get('id');
+        const hotelId = params.get('id');
 
-        const response = await fetch(`http://localhost:3000/hoteis/${id}`, {
-            method: 'GET'
-        });
+        const reservaContainer = document.querySelector('.card-reserva');
 
-        const hotelData = await response.json();
+        async function carregarHotel() {
 
-        console.log(hotelData);
+            try {
 
-        function appendHotel(hotelData) {
+                if (!hotelId) {
+                    reservaContainer.innerHTML = '<p>Hotel não encontrado.</p>';
+                    return;
+                }
 
-            const cardReserva = document.createElement('div');
+                const response = await fetch(`http://localhost:3000/hoteis/${hotelId}`, {
+                    method: 'GET'
+                });
 
-            cardReserva.classList.add('card');
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar hotel');
+                }
 
-            const hotelNome = document.createElement('h2');
+                const objeto = await response.json();
 
-            hotelNome.textContent = hotelData.fantasia;
+                const hotel = objeto.hotel
+
+                criarCardHotel(hotel);
+
+            } catch (error) {
+
+                console.error(error);
+
+                reservaContainer.innerHTML = `
+                <p>Erro ao carregar informações do hotel.</p>
+            `;
+            }
+        }
+
+        function criarCardHotel(hotel) {
+
+            const hotelCard = document.createElement('div');
+
+            hotelCard.classList.add('hotel-card-reserva');
+
+
+            const hotelTitulo = document.createElement('h2');
+
+            hotelTitulo.classList.add('hotel-titulo');
+
+            hotelTitulo.textContent = hotel.fantasia;
+
 
             const hotelDescricao = document.createElement('p');
 
-            hotelDescricao.textContent = hotelData.descricao;
+            hotelDescricao.classList.add('hotel-descricao');
 
-            cardReserva.appendChild(hotelNome);
+            hotelDescricao.textContent = "Um hotel show de bola para <br> você e toda a sua família ;-)";
 
-            cardReserva.appendChild(hotelDescricao);
 
-            document
-                .querySelector('.card-reserva')
-                .appendChild(cardReserva);
+            const hotelLocalizacao = document.createElement('p');
+
+            hotelLocalizacao.classList.add('hotel-localizacao');
+
+            hotelLocalizacao.textContent = `Localização: ${hotel.localizacao}`;
+
+
+            hotelCard.appendChild(hotelTitulo);
+
+            hotelCard.appendChild(hotelDescricao);
+
+            hotelCard.appendChild(hotelLocalizacao);
+
+
+            reservaContainer.appendChild(hotelCard);
         }
 
-        appendHotel(hotelData);
+        carregarHotel();
 
     </script>
 
