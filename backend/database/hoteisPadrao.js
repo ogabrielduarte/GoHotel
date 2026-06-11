@@ -34,7 +34,7 @@ const hoteis = [
         cnpj: '42424242424242',
         fantasia: 'Hotel Prefect',
         localizacao: 'England, United Kingdom',
-        descricao: 'NÃO PERCA A SUA TOALHA',
+        descricao: `DON'T PANIC`,
         qtd_quartos: 42,
         imagem: 'https://go-hotel.vercel.app/assets/images/hoteis-padrao/prefect.jpg'
     },
