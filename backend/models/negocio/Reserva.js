@@ -7,10 +7,10 @@ export class Reserva {
 
     constructor({ id = null, dataEntrada, dataSaida, idUsuario, idHotel }) {
         this.#id = id;
-        setDataEntrada(dataEntrada);
-        setDataSaida(dataSaida);
-        setIdUsuario(idUsuario);
-        setIdHotel(idHotel);
+        this.setDataEntrada(dataEntrada);
+        this.setDataSaida(dataSaida);
+        this.setIdUsuario(idUsuario);
+        this.setIdHotel(idHotel);
     }
 
     // GET-SET ID
