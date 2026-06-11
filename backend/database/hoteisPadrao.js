@@ -7,7 +7,7 @@ const hoteis = [
         cnpj: '12345678901234',
         fantasia: 'Pousada Pratagy',
         localizacao: 'Maceió, Brasil',
-        descricao: 'A melhor casa de praia Caribe Nordestino',
+        descricao: 'A melhor casa de praia do Caribe Nordestino',
         qtd_quartos: 20,
         imagem: '../../frontend/assets/images/hoteis-padrao/thegreat.jpg'
     },
