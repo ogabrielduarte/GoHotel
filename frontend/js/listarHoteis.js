@@ -37,7 +37,10 @@ async function listarHoteis() {
     container.addEventListener('click', (event) => {
 
         if (event.target.classList.contains('btn-reserva')) {
-window.location.href = `reserva.html?id=${id}`;
+
+            const id = event.target.dataset.id;
+
+            window.location.href = `reserva.html?id=${id}`;
         }
     });
 }
@@ -50,9 +53,9 @@ if (!token) {
 
 const nameElement = document.getElementById('name');
 
-    if (token && nameElement) {
-        nameElement.innerHTML = `${localStorage.getItem('nome')}`;
-    }
+if (token && nameElement) {
+    nameElement.innerHTML = `${localStorage.getItem('nome')}`;
+}
 
 
 const perfilPage = document.getElementById("perfil");
