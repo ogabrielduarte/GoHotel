@@ -29,7 +29,7 @@ function criarTabelas() {
                 `)
 
             db.run(`
-                CREATE TABLE IF NOT EXISTS reserva (
+                CREATE TABLE IF NOT EXISTS reservas (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     data_entrada TEXT,
                     data_saida TEXT,
