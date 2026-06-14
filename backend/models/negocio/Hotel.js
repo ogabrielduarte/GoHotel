@@ -7,10 +7,10 @@ export class Hotel {
 
     constructor({ id = null, cnpj, fantasia, localizacao, quartos }) {
         this.#id = id;
-        setCnpj(cnpj);
-        setFantasia(fantasia);
-        setLocalizacao(localizacao);
-        setQuartos(quartos);
+        this.setCnpj(cnpj);
+        this.setFantasia(fantasia);
+        this.setLocalizacao(localizacao);
+        this.setQuartos(quartos);
     }
 
     //GET-SET ID
