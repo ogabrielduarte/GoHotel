@@ -102,6 +102,35 @@ export class ReservaDAO {
         });
     }
 
+    verificarDisponibilidade(idHotel, dataEntrada, dataSaida) {
+        const db = this.iniciar();
+        const sql = `
+            SELECT COUNT(*)
+            FROM reservas
+            WHERE id_hotel = ?
+            AND data_entrada <= ?
+            AND data_saida >= ?
+        `;
+
+        return new Promise((resolve, reject) => {
+            db.get(
+                sql,
+                [idHotel, dataSaida, dataEntrada],
+                function (err, row) {
+                    db.close();
+
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+
+                    resolve(row['COUNT(*)']);
+                }
+            );
+        });
+
+    }
+
     atualizar(dados, id) {
         const db = this.iniciar();
 
