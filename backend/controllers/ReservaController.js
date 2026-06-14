@@ -1,5 +1,6 @@
 import { Reserva } from "../models/negocio/Reserva.js";
 import { ReservaDAO } from "../models/persistencia/ReservaDAO.js";
+import { HotelDAO } from "../models/persistencia/HotelDAO.js";
 
 export class ReservaController {
 
@@ -10,6 +11,30 @@ export class ReservaController {
             const reserva = new Reserva(req.body);
 
             const dao = new ReservaDAO();
+            const daoHotel = new HotelDAO();
+
+            const ocupados = await dao.verificarDisponibilidade(
+                reserva.getIdHotel(),
+                reserva.getDataEntrada(),
+                reserva.getDataSaida()
+            );
+            console.log(ocupados)
+
+            const hotel = await daoHotel.buscarPorId(
+                reserva.getIdHotel()
+            );
+            console.log(hotel)
+
+            const total = hotel.qtd_quartos;
+            console.log(total)
+
+            console.log(ocupados >= total)
+
+            if (ocupados >= total) {
+                return res.status(403).json({
+                    erro: 'Não há quartos disponíveis nesse hotel'
+                })
+            }
 
             const id = await dao.cadastrar(reserva);
 
@@ -27,7 +52,7 @@ export class ReservaController {
 
     }
 
-    async buscar(req, res) {
+    async buscarPorId(req, res) {
 
         try {
 
