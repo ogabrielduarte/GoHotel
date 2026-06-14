@@ -8,7 +8,7 @@ const router = express.Router();
 // ROTAS DE RESERVA
 router.post('/reservas', controller.cadastrar);
 
-router.get('/reservas/:id', controller.buscar);
+router.get('/reservas/:id', controller.buscarPorId);
 
 router.get('/usuarios/:id/reservas', controller.listarReservasUsuario);
 
