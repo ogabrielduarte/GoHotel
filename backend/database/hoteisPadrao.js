@@ -4,7 +4,7 @@ const db = new sqlite3.Database('./gohotel_db.db');
 
 const hoteis = [
     {
-        cnpj: '12345678901234',
+        cnpj: '12.345.678/9012-34',
         fantasia: 'Pousada Pratagy',
         localizacao: 'Maceió, Brasil',
         descricao: 'A melhor casa de praia do Caribe Nordestino',
@@ -13,7 +13,7 @@ const hoteis = [
     },
 
     {
-        cnpj: '13579135791357',
+        cnpj: '13.579.135/7913-57',
         fantasia: 'O Pônei Saltitante',
         localizacao: 'Bree, Middle-earth',
         descricao: 'Uma casa agradável a olhos familiares',
@@ -22,7 +22,7 @@ const hoteis = [
     },
 
     {
-        cnpj: '02468024680246',
+        cnpj: '02.468.024/6802-46',
         fantasia: 'The Great Hotel',
         localizacao: 'Budapest, Hungria',
         descricao: 'Ainda resta uma centelha fraca de civilização neste matadouro selvagem que já foi conhecido como humanidade.',
@@ -31,7 +31,7 @@ const hoteis = [
     },
 
     {
-        cnpj: '42424242424242',
+        cnpj: '42.424.242/4242-42',
         fantasia: 'Hotel Prefect',
         localizacao: 'England, United Kingdom',
         descricao: `DON'T PANIC`,
@@ -40,7 +40,7 @@ const hoteis = [
     },
 
     {
-        cnpj: '25713793791713',
+        cnpj: '25.713.793/7917-13',
         fantasia: 'Copacabana Palace',
         localizacao: 'Rio de Janeiro, Brasil',
         descricao: 'Sempre excelente',
