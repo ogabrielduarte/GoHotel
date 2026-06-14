@@ -24,7 +24,7 @@
         </nav>
         <div class="profile">
             <p id="name"></p>
-            <i class="fa-regular fa-circle-user" id="Uicon"></i>
+            <i class="fa-regular fa-circle-user" id="perfil"></i>
         </div>
 
         <i class="fa-solid fa-sign-out" id="logout"></i>
@@ -96,6 +96,25 @@
         }
     });
 
+
+    //coisinhas bem funny
+    const easter = document.querySelector(".Itext")
+    let clickCount = 0
+    easter.addEventListener("click", () => {
+        clickCount++
+        console.log(easter)
+        if (clickCount == 1) {
+            document.getElementById("Ititulo").innerHTML = "GoHotel!"
+            document.getElementById("Isub").innerHTML = "NÃO CLIQUE DENOVO!"
+        } else if (clickCount == 2) {
+            document.getElementById("Ititulo").innerHTML = "GoHotel!?"
+            document.getElementById("Isub").innerHTML = "nós avisamos"
+        }
+        if (clickCount == 3) {
+            window.location.href = 'https://youtu.be/QDia3e12czc?si=vM5atu__wpVlkG5O'
+        }
+    })
+    
 </script>
 
 </html>

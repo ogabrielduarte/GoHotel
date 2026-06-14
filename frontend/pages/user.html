@@ -26,11 +26,16 @@
     </header>
 
     <div id="sideUser" class="sideUser">
-        <div id="Uicon" class="sideInfo"> <img src="../assets/images/Uicon.png" srcset="apesar de tudo ainda é você" ></div>
-        <div id="Unome" class="sideInfo"></div>
-        <div id="Uemail" class="sideInfo"></div>
+        <div class="sideInfo" style="text-align: center;"><img src="../assets/images/Uicon.png" srcset="apesar de tudo ainda é você" id="Uicon"></div>
+        <div id="Unome" class="sideInfo"><!-- fetch pra pegar o nome de usuario a partir de quem ta logado --></div>
+        <div id="Uemail" class="sideInfo"><!-- fetch pra pegar o email de usuario a partir de quem ta logado --></div>
     </div>
 
+    <h1>Reservado</h1>
+    <div id="container-reservado">
+        <!-- aparecer mensagem de que não tem reserva feita quando realmente não tiver -->
+        <!-- aqui aparece o hotel que o usuario reservou -->
+    </div>
 </body>
 <script type="module">
     import { verificarLogin } from "./modulos.js"
@@ -41,7 +46,7 @@
 
 
 
-TIRE ESSE COMENTARIO ANTES DE ENVIAR ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+            TIRE ESSE COMENTARIO ANTES DE ENVIAR ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
 
 
 
