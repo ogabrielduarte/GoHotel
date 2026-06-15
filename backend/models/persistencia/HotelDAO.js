@@ -11,8 +11,8 @@ export class HotelDAO {
 
         return new Promise((resolve, reject) => {
             const sql = `
-                INSERT INTO hoteis (cnpj, fantasia, localizacao, quartos)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO hoteis (cnpj, fantasia, localizacao, descricao, qtd_quartos, imagem)
+                VALUES (?, ?, ?, ?, ?, ?)
             `;
 
             db.run(
@@ -21,7 +21,9 @@ export class HotelDAO {
                     hotel.getCnpj(),
                     hotel.getFantasia(),
                     hotel.getLocalizacao(),
-                    hotel.getQuartos()
+                    hotel.getDescricao(),
+                    hotel.getQuartos(),
+                    hotel.getImagem()
                 ],
 
                 function (err) {
@@ -101,7 +103,7 @@ export class HotelDAO {
         });
     }
 
-    atualizar(dados, id) {
+    atualizar(id, dados) {
 
         const db = this.iniciar();
 
@@ -110,8 +112,10 @@ export class HotelDAO {
         SET cnpj = ?,
             fantasia = ?,
             localizacao = ?,
-            quartos = ?,
-        WHERE id = ?
+            qtd_quartos = ?,
+            descricao = ?,
+            imagem = ?
+            WHERE id = ?
     `;
 
         return new Promise((resolve, reject) => {
@@ -123,6 +127,8 @@ export class HotelDAO {
                     dados.fantasia,
                     dados.localizacao,
                     dados.quartos,
+                    dados.descricao,
+                    dados.imagem,
                     id
                 ],
 
