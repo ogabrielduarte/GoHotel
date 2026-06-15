@@ -51,7 +51,7 @@ export class HotelController {
 
     async atualizar(req, res) {
         try {
-            const { id } = req.params;
+            const id = Number(req.params.id);
             const dados = req.body;
 
             if (!id) {
