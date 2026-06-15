@@ -156,7 +156,8 @@ export class UsuarioDAO {
         UPDATE usuarios
         SET nome = ?,
             genero = ?,
-            email = ?
+            email = ?,
+            senha = ?
         WHERE id = ?
     `;
 
@@ -166,7 +167,9 @@ export class UsuarioDAO {
                 sql,
                 [
                     dados.nome,
+                    dados.genero,
                     dados.email,
+                    dados.senha,
                     id
                 ],
 
