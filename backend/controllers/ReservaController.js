@@ -18,17 +18,12 @@ export class ReservaController {
                 reserva.getDataEntrada(),
                 reserva.getDataSaida()
             );
-            console.log(ocupados)
 
             const hotel = await daoHotel.buscarPorId(
                 reserva.getIdHotel()
             );
-            console.log(hotel)
-
             const total = hotel.qtd_quartos;
-            console.log(total)
 
-            console.log(ocupados >= total)
 
             if (ocupados >= total) {
                 return res.status(403).json({

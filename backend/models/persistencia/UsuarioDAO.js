@@ -8,11 +8,11 @@ export class UsuarioDAO {
 
     cadastrar(usuario) {
 
-    const db = this.iniciar();
+        const db = this.iniciar();
 
-    return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
 
-        const sql = `
+            const sql = `
             INSERT INTO usuarios
             (
                 nome,
@@ -25,34 +25,34 @@ export class UsuarioDAO {
             VALUES (?, ?, ?, ?, ?, ?)
         `;
 
-        db.run(
-            sql,
-            [
-                usuario.getNome(),
-                usuario.getGenero(),
-                usuario.getEmail(),
-                usuario.getSenha(),
-                usuario.getTermos(),
-                usuario.getReceberEmails()
-            ],
+            db.run(
+                sql,
+                [
+                    usuario.getNome(),
+                    usuario.getGenero(),
+                    usuario.getEmail(),
+                    usuario.getSenha(),
+                    usuario.getTermos(),
+                    usuario.getReceberEmails()
+                ],
 
-            function (err) {
+                function (err) {
 
-                db.close();
+                    db.close();
 
-                if (err) {
-                    reject(err);
-                    return;
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+
+                    resolve(this.lastID);
+
                 }
+            );
 
-                resolve(this.lastID);
+        });
 
-            }
-        );
-
-    });
-
-}
+    }
 
     login(email) {
 
@@ -102,10 +102,10 @@ export class UsuarioDAO {
 
             db.all(
                 sql, [],
-                function(err, rows) {
+                function (err, rows) {
                     db.close();
 
-                    if(err) {
+                    if (err) {
                         reject(err);
                         return;
                     }
