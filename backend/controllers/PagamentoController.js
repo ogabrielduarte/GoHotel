@@ -55,6 +55,26 @@ export class PagamentoController {
 
     }
 
+    async listarTodos(req, res) {
+
+        try {
+
+            const dao = new PagamentoDAO();
+
+            const pagamentos = await dao.listarTodos();
+
+            res.status(200).json(pagamentos);
+
+        } catch (e) {
+
+            res.status(400).json({
+                erro: e.message || e
+            });
+
+        }
+
+    }
+
     async atualizar(req, res) {
 
         try {
