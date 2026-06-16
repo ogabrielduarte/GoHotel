@@ -106,6 +106,8 @@
             const form = document.createElement('form');
             form.id = 'datas-reserva';
 
+            const hoje = new Date().toISOString().split('T')[0];
+            
             // LABEL DATA DE ENTRADA    
             const labelEntrada = document.createElement('label');
             labelEntrada.htmlFor = 'entrada';
@@ -116,6 +118,7 @@
             inputEntrada.type = 'date';
             inputEntrada.name = 'dataEntrada';
             inputEntrada.id = 'entrada';
+            inputEntrada.min = hoje;
 
             // LABEL DATA DE SAÍDA
             const labelSaida = document.createElement('label');
@@ -127,6 +130,7 @@
             inputSaida.type = 'date';
             inputSaida.name = 'dataSaida';
             inputSaida.id = 'saida';
+            inputSaida.min = hoje;
 
             // BOTÃO SEND
             const buttonSubmit = document.createElement('button');
@@ -176,8 +180,8 @@
                             idHotel
                         })
                     });
-                    
-                        const data = await response.json();
+
+                    const data = await response.json();
 
                     if (!response.ok) {
                         throw new Error(data.erro || 'Erro ao realizar reserva');
