@@ -178,3 +178,37 @@ div.hotel-info {
 .hotel-titulo {
     font-size: 3rem;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 30px;
+}
+
+input {
+    font-family: Poppins;
+    font-size: 1rem;
+
+    padding: 10px;
+    border: solid rgba(166, 247, 246, 0.25) 2px;
+    border-radius: 5px;
+}
+
+button.send-btn {
+    font-family: Poppins;
+    font-size: 1rem;
+    color: #fcfeff;
+
+    background: radial-gradient(rgb(51, 151, 151),
+            rgb(33, 123, 126) 60%);
+
+    border: solid, 3px, #fcfeffc4;
+    border-radius: 5px;
+
+    margin-top: 20px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
