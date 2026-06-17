@@ -158,6 +158,26 @@ export class UsuarioController {
         }
     }
 
+    async listarReservasUsuario() {
+        try {
+            const id = Number(req.params.id);
+
+            if (!id) {
+                return res.status(400).json({
+                    erro: "ID inválido"
+                });
+            }
+
+            const dao = new UsuarioDAO();
+
+            const reservas = dao.listarReservas(id);
+
+            res.status(201).json({reservas})
+        } catch (e) {
+
+        }
+    }
+
     async atualizar(req, res) {
         try {
             const id = Number(req.params.id);
