@@ -215,6 +215,10 @@ export class UsuarioController {
         }
     }
 
+    async atualizarFoto(req, res) {
+        
+    }
+
     async deletar(req, res) {
         try {
             const id = Number(req.params.id);
