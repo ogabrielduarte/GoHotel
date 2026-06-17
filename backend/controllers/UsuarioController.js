@@ -158,7 +158,7 @@ export class UsuarioController {
         }
     }
 
-    async listarReservasUsuario() {
+    async listarReservasUsuario(req, res) {
         try {
             const id = Number(req.params.id);
 
@@ -170,11 +170,19 @@ export class UsuarioController {
 
             const dao = new UsuarioDAO();
 
-            const reservas = dao.listarReservas(id);
+            const reservas = await dao.listarReservas(id);
+
+            if(!reservas || reservas.length === 0) {
+                return res.status(400).json({
+                    erro: "Não há reservas"
+                });
+            }
 
             res.status(201).json({reservas})
         } catch (e) {
-
+            return res.status(500).json({
+                erro: e.message || e
+            });
         }
     }
 
