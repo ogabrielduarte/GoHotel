@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/perfil-foto.css">
     <title>Perfil</title>
 </head>
 
@@ -22,12 +23,16 @@
             <button class="redirect" id="reserva">faça sua reserva!</button>
         </nav>
 
-        <i class="fa-solid fa-sign-out" id="logout"></i>
+        <i class="fa-solid fa-sign-out" id="logoutButton"></i>
     </header>
 
     <div id="sideUser" class="sideUser">
-        <div class="sideInfo" style="text-align: center;"><img src="../assets/images/Uicon.png"
-                srcset="apesar de tudo ainda é você" id="Uicon"></div>
+        <div class="foto-perfil-wrapper sideInfo" style="text-align: center;">
+            <img src="../assets/images/Uicon.png" id="Uicon" alt="Foto de perfil" title="Clique para mudar sua foto">
+            <div class="foto-perfil-hover" id="fotoPerfilHover">
+                <i class="fa-solid fa-camera"></i>
+            </div>
+        </div>
         <div id="Unome" class="sideInfo"><!-- fetch pra pegar o nome de usuario a partir de quem ta logado --></div>
     </div>
 
@@ -38,11 +43,36 @@
             <!--reservas dos usuários-->
         </div>
     </div>
+
+    <!-- Modal de troca de foto de perfil -->
+    <div id="fotoModalOverlay" class="foto-modal-overlay hidden">
+        <div class="foto-modal" id="fotoModal">
+            <button class="foto-modal-close" id="fotoModalClose" aria-label="Fechar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h2>Mude sua foto</h2>
+
+            <img id="fotoPreview" src="../assets/images/Uicon.png" class="foto-preview" alt="Pré-visualização da foto">
+
+            <label for="fotoInput" class="foto-input-label">
+                <i class="fa-solid fa-upload"></i> Escolher imagem
+            </label>
+            <input type="file" id="fotoInput" accept="image/*" hidden>
+
+            <button id="fotoSalvar" class="foto-salvar-btn" disabled>Salvar foto</button>
+        </div>
+    </div>
 </body>
 <script type="module">
     import { verificarLogin } from "./modulos.js"
 
     const Unome = document.getElementById('Unome');
+    const Uicon = document.getElementById('Uicon');
+
+    // Restaura a foto salva anteriormente (se o usuário já tiver trocado antes)
+    const fotoSalva = localStorage.getItem('fotoPerfil');
+    if (fotoSalva) Uicon.src = fotoSalva;
 
     Unome.innerHTML = `${localStorage.getItem("nome")}`
 
@@ -56,6 +86,48 @@
             alert('Deslogado com sucesso!');
             location.href = './index.html';
         }
+    });
+
+    // ===== Troca de foto de perfil =====
+    const fotoModalOverlay = document.getElementById('fotoModalOverlay');
+    const fotoModalClose = document.getElementById('fotoModalClose');
+    const fotoInput = document.getElementById('fotoInput');
+    const fotoPreview = document.getElementById('fotoPreview');
+    const fotoSalvar = document.getElementById('fotoSalvar');
+
+    function abrirModalFoto() {
+        fotoPreview.src = Uicon.src;
+        fotoInput.value = "";
+        fotoSalvar.disabled = true;
+        fotoModalOverlay.classList.remove('hidden');
+    }
+
+    function fecharModalFoto() {
+        fotoModalOverlay.classList.add('hidden');
+    }
+
+    Uicon.addEventListener('click', abrirModalFoto);
+    fotoModalClose.addEventListener('click', fecharModalFoto);
+    fotoModalOverlay.addEventListener('click', (e) => {
+        if (e.target === fotoModalOverlay) fecharModalFoto();
+    });
+
+    fotoInput.addEventListener('change', () => {
+        const arquivo = fotoInput.files[0];
+        if (!arquivo) return;
+
+        const leitor = new FileReader();
+        leitor.onload = (e) => {
+            fotoPreview.src = e.target.result;
+            fotoSalvar.disabled = false;
+        };
+        leitor.readAsDataURL(arquivo);
+    });
+
+    fotoSalvar.addEventListener('click', () => {
+        Uicon.src = fotoPreview.src;
+        localStorage.setItem('fotoPerfil', fotoPreview.src);
+        fecharModalFoto();
     });
 
 </script>
