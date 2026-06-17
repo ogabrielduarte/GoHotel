@@ -30,6 +30,12 @@ router.get(
     controller.buscarPorId
 );
 
+router.get (
+    '/usuarios/reservas/:id',
+    autenticar,
+    controller.listarReservasUsuario
+)
+
 router.put(
     '/usuarios/:id',
     autenticar,
