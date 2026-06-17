@@ -40,12 +40,12 @@ const hoteis = [
     },
 
     {
-        cnpj: '25.713.793/7917-13',
-        fantasia: 'Copacabana Palace',
-        localizacao: 'Rio de Janeiro, Brasil',
-        descricao: 'Sempre excelente',
-        qtd_quartos: 200,
-        imagem: 'https://go-hotel.vercel.app/assets/images/hoteis-padrao/palace.jpg'
+        cnpj: '19.451.945./1945-19',
+        fantasia: 'Kremlin',
+        localizacao: 'Moskva - Rodina-mat',
+        descricao: 'A liberdade na sociedade capitalista permanece praticamente a mesma que era nas antigas repúblicas gregas: liberdade para os donos de escravos.',
+        qtd_quartos: 389,
+        imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5rLZQxMuZXMv5x4D7PinGYWqtyeQHl1_o1Q&s'
     }
 ];
 
