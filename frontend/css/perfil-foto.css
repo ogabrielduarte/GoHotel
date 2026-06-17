@@ -1,0 +1,132 @@
+.foto-perfil-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.foto-perfil-wrapper img#Uicon {
+    display: block;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.foto-perfil-hover {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #fff;
+    font-size: 0.8rem;
+    border: 2px solid #fff;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.foto-perfil-wrapper:hover .foto-perfil-hover {
+    background: #1e4fc4;
+    transform: scale(1.08);
+}
+
+/* ----- Overlay do modal ----- */
+.foto-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.foto-modal-overlay.hidden {
+    display: none;
+}
+
+/* ----- Card do modal ----- */
+.foto-modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    width: min(90vw, 360px);
+    text-align: center;
+    position: relative;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.foto-modal h2 {
+    margin: 0 0 1.2rem;
+    font-size: 1.3rem;
+    color: #222;
+}
+
+.foto-modal-close {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: #777;
+    cursor: pointer;
+}
+
+.foto-modal-close:hover {
+    color: #222;
+}
+
+.foto-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 1.2rem;
+    display: block;
+    border: 3px solid #eee;
+}
+
+.foto-input-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 1rem;
+    transition: background 0.2s ease;
+}
+
+.foto-input-label:hover {
+    background: #f3f3f3;
+}
+
+.foto-salvar-btn {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.foto-salvar-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.foto-salvar-btn:not(:disabled):hover {
+    background: #1e4fc4;
+}
