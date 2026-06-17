@@ -423,6 +423,12 @@ p#Isub {
 
 
 #sideUser{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-size: 3rem;
+
     border-right: solid rgb(164, 184, 184);
     height: 100%;
     width: 33%;

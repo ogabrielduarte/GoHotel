@@ -17,7 +17,7 @@
         <a href="../index.html">
             <img src="../assets/images/GHLOGO.png" class="home">
         </a>
-        
+
         <nav class="nav">
             <button class="redirect" id="reserva">faça sua reserva!</button>
         </nav>
@@ -26,39 +26,25 @@
     </header>
 
     <div id="sideUser" class="sideUser">
-        <div class="sideInfo" style="text-align: center;"><img src="../assets/images/Uicon.png" srcset="apesar de tudo ainda é você" id="Uicon"></div>
+        <div class="sideInfo" style="text-align: center;"><img src="../assets/images/Uicon.png"
+                srcset="apesar de tudo ainda é você" id="Uicon"></div>
         <div id="Unome" class="sideInfo"><!-- fetch pra pegar o nome de usuario a partir de quem ta logado --></div>
-        <div id="Uemail" class="sideInfo"><!-- fetch pra pegar o email de usuario a partir de quem ta logado --></div>
     </div>
 
-    <h1>Reservado</h1>
-    <div id="container-reservado">
-        <!-- aparecer mensagem de que não tem reserva feita quando realmente não tiver -->
-        <!-- aqui aparece o hotel que o usuario reservou -->
+    <div class="reservas-user">
+        <h1>SUAS RESERVAS</h1>
+
+        <div class="container-reservas">
+            <!--reservas dos usuários-->
+        </div>
     </div>
 </body>
 <script type="module">
     import { verificarLogin } from "./modulos.js"
-    /* 
 
+    const Unome = document.getElementById('Unome');
 
-
-
-
-
-            TIRE ESSE COMENTARIO ANTES DE ENVIAR ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
-
-
-
-
-
-
-
-
-    document.addEventListener("DOMContentLoaded", verificarLogin) // verificar se o login realmente ta feito
-    */
-    const reserva = document.getElementById("reserva");
-    const logoutButton = document.querySelector(".fa-sign-out")
+    Unome.innerHTML = `${localStorage.getItem("nome")}`
 
     reserva.addEventListener("click", () => {
         window.location.href = "./hoteis.html"

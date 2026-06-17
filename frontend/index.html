@@ -61,7 +61,7 @@
     perfilPage.addEventListener("click", () => {
         if (token) {
             const id = localStorage.getItem("id");
-            location.href = `http://locahost:3000/usuarios/${id}`
+            location.href = `./pages/user.html?id=${id}`
         } else {
             alert('Faça o log-in para acessar o perfil');
             window.location.href = './pages/login.html';
