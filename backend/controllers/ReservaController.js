@@ -75,7 +75,7 @@ export class ReservaController {
 
     }
 
-    async listarReservasUsuario(req, res) {
+    async listarTodas(req, res) {
 
         try {
 
@@ -89,7 +89,7 @@ export class ReservaController {
 
             const dao = new ReservaDAO();
 
-            const reservas = await dao.listarReservasUsuario(idUsuario);
+            const reservas = await dao.listarTodas(idUsuario);
 
             res.status(200).json(reservas);
 
