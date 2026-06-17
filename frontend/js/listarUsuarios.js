@@ -84,7 +84,8 @@ const logoutButton = document.getElementById("logout");
 perfilPage.addEventListener("click", () => {
 
     if (token) {
-        location.href = '../pages/user.html';
+        const idUser = localStorage.getItem("id");
+        location.href = `./user.html?id=${idUser}`;
     } else {
         alert('Faça o log-in para acessar o perfil');
         window.location.href = '../pages/login.html';
