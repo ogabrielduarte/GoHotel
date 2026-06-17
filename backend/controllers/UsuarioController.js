@@ -36,16 +36,18 @@ export class UsuarioController {
                 receberEmails: usuario.getReceberEmails()
             };
 
+            
+
+            if (usuario.getReceberEmails() === 1) {
+                let mail = await criarMensagemBemVindo();
+                await sendEmail(usuario.getEmail(), mail.subject, mail.html);
+            };
+
             return res.status(201).json({
                 mensagem: "Usuário cadastrado com sucesso",
                 token,
                 usuario: usuarioSemSenha
             });
-
-            if (usuario.getReceberEmails() === 1) {
-                let mail = await criarMensagemBemVindo();
-                await sendEmail(usuario.getEmail(), mail.subject, mail.html);
-            }
 
         } catch (e) {
             return res.status(500).json({
