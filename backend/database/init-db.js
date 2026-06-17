@@ -12,7 +12,8 @@ function criarTabelas() {
                 email TEXT UNIQUE NOT NULL,
                 senha TEXT NOT NULL,
                 termos INTEGER NOT NULL CHECK (termos IN (0, 1)),
-                receber_emails INTEGER NOT NULL DEFAULT 0 CHECK (receber_emails IN (0, 1))
+                receber_emails INTEGER NOT NULL DEFAULT 0 CHECK (receber_emails IN (0, 1)),
+                foto_perfil TEXT
             );
             `)
 
