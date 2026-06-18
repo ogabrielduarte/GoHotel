@@ -40,8 +40,10 @@
     <div class="reservas-user">
         <h1>SUAS RESERVAS</h1>
 
-        <div class="card-reserva">
-            não a reservas feitas
+        <div class="container-reservas">
+            <div class="card-reserva">
+                Carregando reservas...
+            </div>
         </div>
     </div>
 
@@ -70,11 +72,9 @@
     verificarLogin()
 
     const Unome = document.getElementById('Unome');
-    const Uemail = document.getElementById('Uemail');
     const Uicon = document.getElementById('Uicon');
 
     Unome.innerHTML = `${localStorage.getItem("nome")}`
-    Uemail.innerHTML = `${localStorage.getItem("email")}`
 
     reserva.addEventListener("click", () => {
         window.location.href = "./hoteis.html"
@@ -202,7 +202,8 @@
         enviarFoto
     );
 
-    const containerReservas = document.querySelector(".container-reservas");
+    const containerReservas =
+        document.querySelector(".container-reservas");
 
     async function listarReservas(container) {
 
@@ -211,7 +212,7 @@
             const id = localStorage.getItem("id");
             const token = localStorage.getItem("token");
 
-            const resposta = await fetch(
+            const response = await fetch(
                 `http://localhost:3000/usuarios/reservas/${id}`,
                 {
                     headers: {
@@ -220,94 +221,130 @@
                 }
             );
 
-            const reservas = await resposta.json();
+            const dados = await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    dados.erro || "Erro ao buscar reservas"
+                );
+            }
+
+            const reservas = dados.reservas;
 
             container.innerHTML = "";
 
-            if (!resposta.ok || !Array.isArray(reservas) || reservas.length === 0) {
+            if (!reservas || reservas.length === 0) {
+
                 container.innerHTML = `
-                <p class="sem-reservas">
-                    Você não possui reservas.
-                </p>
+                <div class="card-reserva">
+                    Nenhuma reserva encontrada.
+                </div>
             `;
+
                 return;
             }
-
-            const lista = document.createElement("div");
-            lista.classList.add("lista-reservas");
 
             reservas.forEach(reserva => {
 
                 const card = document.createElement("div");
+
                 card.classList.add("card-reserva");
 
                 card.innerHTML = `
-                <h3>${reserva.hotel?.fantasia || reserva.nomeLocal || "Reserva"}</h3>
-                <p>Entrada: ${reserva.dataEntrada || "-"}</p>
-                <p>Saída: ${reserva.dataSaida || "-"}</p>
+                <h3>${reserva.fantasia}</h3>
 
-                <div class="buttons">
-                    <button
-                        class="btn-delete"
-                        data-id="${reserva.id}">
-                        Cancelar
-                    </button>
-                </div>
+                <p>
+                    <strong>Entrada:</strong>
+                    ${reserva.data_entrada}
+                </p>
+
+                <p>
+                    <strong>Saída:</strong>
+                    ${reserva.data_saida}
+                </p>
+
+                <button
+                    class="btn-delete"
+                    data-id="${reserva.id}">
+                    Cancelar Reserva
+                </button>
             `;
 
-                lista.appendChild(card);
+                container.appendChild(card);
             });
 
-            container.appendChild(lista);
+            document
+                .querySelectorAll(".btn-delete")
+                .forEach(button => {
 
-            lista.querySelectorAll(".btn-delete").forEach(button => {
+                    button.addEventListener(
+                        "click",
+                        async () => {
 
-                button.addEventListener("click", async () => {
-
-                    if (!confirm("Deseja cancelar essa reserva?")) {
-                        return;
-                    }
-
-                    try {
-
-                        const response = await fetch(
-                            `http://localhost:3000/reservas/${button.dataset.id}`,
-                            {
-                                method: "DELETE",
-                                headers: {
-                                    Authorization: `Bearer ${token}`
-                                }
+                            if (
+                                !confirm(
+                                    "Deseja cancelar esta reserva?"
+                                )
+                            ) {
+                                return;
                             }
-                        );
 
-                        const dados = await response.json();
+                            try {
 
-                        if (!response.ok) {
-                            alert(dados.erro || "Erro ao cancelar reserva");
-                            return;
+                                const response =
+                                    await fetch(
+                                        `http://localhost:3000/reservas/${button.dataset.id}`,
+                                        {
+                                            method: "DELETE",
+                                            headers: {
+                                                Authorization:
+                                                    `Bearer ${token}`
+                                            }
+                                        }
+                                    );
+
+                                const dados =
+                                    await response.json();
+
+                                if (!response.ok) {
+                                    throw new Error(
+                                        dados.erro ||
+                                        "Erro ao cancelar reserva"
+                                    );
+                                }
+
+                                alert(
+                                    "Reserva cancelada com sucesso!"
+                                );
+
+                                listarReservas(container);
+
+                            } catch (erro) {
+
+                                console.error(erro);
+
+                                alert(
+                                    erro.message ||
+                                    "Erro ao cancelar reserva"
+                                );
+                            }
                         }
-
-                        alert("Reserva cancelada com sucesso!");
-
-                        listarReservas(container);
-
-                    } catch (erro) {
-                        console.error(erro);
-                        alert("Erro ao cancelar reserva");
-                    }
+                    );
                 });
-
-            });
 
         } catch (erro) {
 
             console.error(erro);
 
             container.innerHTML = `
-            <p>Erro ao carregar reservas.</p>
+            <div class="card-reserva">
+                Erro ao carregar reservas.
+            </div>
         `;
         }
     }
+
+    listarReservas(containerReservas);
 
 </script>
 
