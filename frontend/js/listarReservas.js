@@ -1,69 +1,57 @@
-/* const id = localStorage.getItem("id")
-
+const id = localStorage.getItem("id");
 const token = localStorage.getItem("token");
 
-async function listarUsuarios() {
+export async function listarReservas(container) {
 
-    const resposta = await fetch(`http://localhost:3000/reservas/${id}/usuario`, {
+    const id = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+
+    const resposta = await fetch(`http://localhost:3000/usuarios/reservas/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
 
-    const data = await resposta.json();
-    console.log(data)
-
-    const container = document.getElementById('container-reservas');
+    const reservas = await resposta.json();
+    console.log(reservas);
 
     container.innerHTML = '';
 
-    usuarios.forEach(usuario => {
+    const lista = document.createElement('div');
+    lista.classList.add('lista-reservas');
 
+    reservas.forEach(reserva => {
         const card = document.createElement('div');
-
-        card.classList.add('card-geral');
+        card.classList.add('card-reserva');
 
         card.innerHTML = `
-            <h3>${usuario.nome}</h3>
-
-            <p>Email: ${usuario.email}</p>
-
+            <h3>${reserva.nomeLocal ?? 'Reserva'}</h3>
+            <p>Data: ${reserva.data}</p>
+            <p>Horário: ${reserva.horario}</p>
             <div class="buttons">
-                <button class="btn-update" data-value="${usuario.id}">
-                    Atualizar
-                </button>
-
-                <button class="btn-delete" data-value="${usuario.id}">
-                    Deletar
+                <button class="btn-delete" data-value="${reserva.id}">
+                    Cancelar
                 </button>
             </div>
         `;
 
-        container.appendChild(card);
+        lista.appendChild(card);
     });
 
-    const deleteButtons = document.querySelectorAll('.btn-delete');
+    container.appendChild(lista);
 
-    deleteButtons.forEach(button => {
-
+    lista.querySelectorAll('.btn-delete').forEach(button => {
         button.addEventListener('click', async () => {
-
-            if (confirm(`Deseja deletar o usuário?`)) {
-                await fetch(`http://localhost:3000/usuarios/${button.dataset.value}`, {
+            if (confirm('Deseja cancelar essa reserva?')) {
+                await fetch(`http://localhost:3000/reservas/${button.dataset.value}`, {
                     method: 'DELETE',
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 });
-
-                alert('Usuário deletado');
+                alert('Reserva cancelada');
             }
-
-            listarUsuarios();
+            listarReservas(container); // recarrega
         });
-
     });
-
 }
-
-listarUsuarios(); */
