@@ -429,3 +429,46 @@ p#Isub {
     height: 100%;
     width: 33%;
 }
+
+.reservas-user{
+    width: 60%;
+    margin-left: 50px;
+    align-self: center;
+}
+
+.container-reservas{
+    background: rgba(226, 226, 226, 0.92);
+
+    border: solid rgba(166, 247, 246, 0.25) 2px;
+
+    width: 80%;
+    min-height: 140px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+    border-radius: 1.2rem;
+
+    box-sizing: border-box;
+
+    backdrop-filter: blur(4px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.08),
+        0 0 15px rgba(255, 255, 255, 0.2);
+
+    transition: 0.3s ease;
+}
+
+.container-reservas:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.12),
+        0 0 20px rgba(166, 247, 246, 0.25);
+}
