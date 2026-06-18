@@ -180,31 +180,26 @@ export class UsuarioDAO {
     }
 
     atualizar(dados, id) {
-
         const db = this.iniciar();
 
-        const sql = `
-        UPDATE usuarios
-        SET nome = ?,
-            genero = ?,
-            email = ?,
-            senha = ?
-        WHERE id = ?
-    `;
+        const campos = Object.keys(dados);
+
+        if (campos.length === 0) {
+            return Promise.reject("Nenhum campo para atualizar");
+        }
+
+        const setClause = campos.map(campo => `${campo} = ?`).join(', ');
+        const valores = campos.map(campo => dados[campo]);
+
+        const sql = `UPDATE usuarios SET ${setClause} WHERE id = ?`;
 
         return new Promise((resolve, reject) => {
 
             db.run(
                 sql,
-                [
-                    dados.nome,
-                    dados.genero,
-                    dados.email,
-                    dados.senha,
-                    id
-                ],
-
+                [...valores, id],
                 function (err) {
+                    
                     db.close();
 
                     if (err) {
@@ -220,10 +215,9 @@ export class UsuarioDAO {
                     resolve(this.changes);
                 }
             );
-
         });
-
     }
+
     atualizarFoto(id, foto) {
 
         const db = this.iniciar();
