@@ -206,6 +206,17 @@
         // MOSTRAR NOME SE LOGADO
         document.getElementById('name').textContent = localStorage.getItem('nome');
 
+        const token = localStorage.getItem("token")
+        const profilePage = document.getElementById("perfil");
+        profilePage.addEventListener("click", () => {
+            if(token) {
+                window.location.href = `user.html?id=${localStorage.getItem("id")}`
+            } else {
+                alert("faça o log-in para acessar essa página");
+                window.location.href = './login.html'
+            }
+        })
+
         const logoutButton = document.getElementById("logout");
 
         // LOG-OUT EVENT
