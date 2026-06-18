@@ -76,20 +76,13 @@ export class ReservaController {
     }
 
     async listarTodas(req, res) {
-
         try {
-
-            const idUsuario = Number(req.params.id);
-
-            if (!idUsuario) {
-                return res.status(400).json({
-                    erro: 'O usuário não existe'
-                });
-            }
 
             const dao = new ReservaDAO();
 
-            const reservas = await dao.listarTodas(idUsuario);
+
+            const reservas = await dao.listarTodas();
+
 
             res.status(200).json(reservas);
 
