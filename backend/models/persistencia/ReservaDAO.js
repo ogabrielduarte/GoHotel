@@ -74,7 +74,7 @@ export class ReservaDAO {
         });
     }
 
-    async listarTodas() {
+    listarTodas() {
         const db = this.iniciar();
 
         return new Promise((resolve, reject) => {
