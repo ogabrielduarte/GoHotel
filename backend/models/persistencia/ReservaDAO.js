@@ -102,21 +102,41 @@ export class ReservaDAO {
         });
     }
 
-    verificarDisponibilidade(idHotel, dataEntrada, dataSaida) {
+    verificarDisponibilidade(
+        idHotel,
+        dataEntrada,
+        dataSaida,
+        idReserva = null
+    ) {
+
         const db = this.iniciar();
-        const sql = `
-            SELECT COUNT(*)
-            FROM reservas
-            WHERE id_hotel = ?
-            AND data_entrada <= ?
-            AND data_saida >= ?
-        `;
+
+        let sql = `
+        SELECT COUNT(*) AS total
+        FROM reservas
+        WHERE id_hotel = ?
+        AND data_entrada <= ?
+        AND data_saida >= ?
+    `;
+
+        const params = [
+            idHotel,
+            dataSaida,
+            dataEntrada
+        ];
+
+        if (idReserva) {
+            sql += ` AND id != ?`;
+            params.push(idReserva);
+        }
 
         return new Promise((resolve, reject) => {
+
             db.get(
                 sql,
-                [idHotel, dataSaida, dataEntrada],
+                params,
                 function (err, row) {
+
                     db.close();
 
                     if (err) {
@@ -124,9 +144,10 @@ export class ReservaDAO {
                         return;
                     }
 
-                    resolve(row['COUNT(*)']);
+                    resolve(row.total);
                 }
             );
+
         });
 
     }
@@ -168,6 +189,41 @@ export class ReservaDAO {
                     }
 
                     resolve(this.changes);
+                }
+            );
+
+        });
+    }
+
+    mudarData(id, dataEntrada, dataSaida) {
+        const db = this.iniciar();
+
+        const sql = `
+            UPDATE reservas
+            SET data_entrada = ?,
+                data_saida = ?
+            WHERE id = ?
+        `
+
+        return new Promise((resolve, reject) => {
+
+            db.run(
+                sql,
+                [id, dataEntrada, dataSaida],
+                function (err) {
+                    db.close();
+
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+
+                    if (this.changes === 0) {
+                        reject('Reserva não encontrada');
+                        return;
+                    }
+
+                    resolve('Reserva atualizada com sucesso');
                 }
             );
 

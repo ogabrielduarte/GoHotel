@@ -154,7 +154,7 @@ export class UsuarioDAO {
 
         return new Promise((resolve, reject) => {
             const sql = `
-                SELECT u.id, h.fantasia, r.data_entrada, r.data_saida
+                SELECT u.id AS usuario, r.id AS id, h.fantasia, r.data_entrada, r.data_saida
                 FROM usuarios u
                 INNER JOIN reservas r ON u.id = r.id_usuario
                 INNER JOIN hoteis h ON r.id_hotel = h.id

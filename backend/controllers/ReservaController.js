@@ -132,6 +132,80 @@ export class ReservaController {
 
     }
 
+    async mudarData(req, res) {
+
+        try {
+
+            const id = Number(req.params.id);
+
+            if (!id) {
+                return res.status(400).json({
+                    erro: "A reserva não existe"
+                });
+            }
+
+            const {
+                dataEntrada,
+                dataSaida
+            } = req.body;
+
+            if (!dataEntrada || !dataSaida) {
+                return res.status(400).json({
+                    erro: "Data de entrada e saída são obrigatórias"
+                });
+            }
+
+            const dao = new ReservaDAO();
+            const daoHotel = new HotelDAO();
+
+            const reservaAtual =
+                await dao.buscaPorId(id);
+
+            if (!reservaAtual) {
+                return res.status(404).json({
+                    erro: "Reserva não encontrada"
+                });
+            }
+
+            const ocupados =
+                await dao.verificarDisponibilidade(
+                    reservaAtual.id_hotel,
+                    dataEntrada,
+                    dataSaida
+                );
+
+            const hotel =
+                await daoHotel.buscarPorId(
+                    reservaAtual.id_hotel
+                );
+
+            if (ocupados >= hotel.qtd_quartos) {
+                return res.status(403).json({
+                    erro: "Não há quartos disponíveis nesse período"
+                });
+            }
+
+            const atualizado =
+                await dao.atualizar(
+                    {
+                        dataEntrada,
+                        dataSaida
+                    },
+                    id
+                );
+
+            res.status(200).json(atualizado);
+
+        } catch (e) {
+
+            res.status(400).json({
+                erro: e.message || e
+            });
+
+        }
+
+    }
+
     async deletar(req, res) {
 
         try {
