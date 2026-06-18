@@ -5,11 +5,11 @@
 }
 
 .foto-perfil-wrapper img#Uicon {
-    display: block;
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 50%;
+    position: flex;
+    border-radius: 100%;
+    margin-top: 120px;
+    width: 80%;
+    box-shadow: 0 0 15px rgb(166, 247, 246);
 }
 
 .foto-perfil-hover {

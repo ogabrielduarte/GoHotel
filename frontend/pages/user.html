@@ -33,14 +33,15 @@
                 <i class="fa-solid fa-camera"></i>
             </div>
         </div>
-        <div id="Unome" class="sideInfo"><!-- fetch pra pegar o nome de usuario a partir de quem ta logado --></div>
+        <div id="Unome" class="sideInfo"></div>
+        <div id="Uemail" class="sideInfo"></div>
     </div>
 
     <div class="reservas-user">
         <h1>SUAS RESERVAS</h1>
 
-        <div class="container-reservas">
-            <!--reservas dos usuários-->
+        <div class="card-reserva">
+            não a reservas feitas
         </div>
     </div>
 
@@ -66,13 +67,14 @@
 </body>
 <script type="module">
     import { verificarLogin } from "./modulos.js"
+    verificarLogin()
 
     const Unome = document.getElementById('Unome');
+    const Uemail = document.getElementById('Uemail');
     const Uicon = document.getElementById('Uicon');
 
-
-
     Unome.innerHTML = `${localStorage.getItem("nome")}`
+    Uemail.innerHTML = `${localStorage.getItem("email")}`
 
     reserva.addEventListener("click", () => {
         window.location.href = "./hoteis.html"

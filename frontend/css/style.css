@@ -418,10 +418,6 @@ p#Isub {
 
 
 
-/* foco em user.html */
-
-
-
 #sideUser{
     display: flex;
     flex-direction: column;
@@ -432,12 +428,4 @@ p#Isub {
     border-right: solid rgb(164, 184, 184);
     height: 100%;
     width: 33%;
-}
-
-#Uicon{
-    position: flex;
-    border-radius: 100%;
-    margin-top: 120px;
-    width: 80%;
-    box-shadow: 0 0 15px rgb(166, 247, 246);
 }
