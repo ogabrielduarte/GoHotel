@@ -70,9 +70,7 @@
     const Unome = document.getElementById('Unome');
     const Uicon = document.getElementById('Uicon');
 
-    // Restaura a foto salva anteriormente (se o usuário já tiver trocado antes)
-    const fotoSalva = localStorage.getItem('fotoPerfil');
-    if (fotoSalva) Uicon.src = fotoSalva;
+    
 
     Unome.innerHTML = `${localStorage.getItem("nome")}`
 
@@ -124,11 +122,50 @@
         leitor.readAsDataURL(arquivo);
     });
 
-    fotoSalvar.addEventListener('click', () => {
-        Uicon.src = fotoPreview.src;
-        localStorage.setItem('fotoPerfil', fotoPreview.src);
+    async function enviarFoto() {
+
+        const arquivo = fotoInput.files[0];
+
+        if (!arquivo) {
+            return;
+        }
+
+        const formData = new FormData();
+
+        formData.append(
+            "foto",
+            arquivo
+        );
+
+        const response = await fetch(
+            `http://localhost:3000/usuarios/${localStorage.getItem("id")}/foto`,
+            {
+                method: "PATCH",
+                headers: {
+                    Authorization:
+                        `Bearer ${localStorage.getItem("token")}`
+                },
+                body: formData
+            }
+        );
+
+        const dados =
+            await response.json();
+
+        if (!response.ok) {
+            alert(dados.erro);
+            return;
+        }
+
+        Uicon.src = dados.foto;
+
         fecharModalFoto();
-    });
+    }
+
+    fotoSalvar.addEventListener(
+        "click",
+        enviarFoto
+    );
 
 </script>
 
