@@ -10,8 +10,9 @@ O projeto consiste em um sistema de reservas para hotéis, que contará com:
 
 - Cadastro e login de usuários
 - Autenticação com criptografia de senhas
-- Persistência de sessão utilizando cookies
+- Persistência de sessão utilizando JWT
 - CRUD completo de usuários, reservas e hotéis
+- Página de perfil pessoal com foto personalizável
 
 ## Tecnologias Utilizadas
 
@@ -23,6 +24,7 @@ Para o desenvolvimento da aplicação, serão utilizadas as seguintes tecnologia
 - Node.js
 - Express
 - SQLite
+- MinIO
 
 ## Bibliotecas e Serviços
 
@@ -31,6 +33,8 @@ O sistema contará com:
 - Criptografia de senhas utilizando **bcrypt**
 - Implementação de **CORS**
 - Utilização do **Nodemon** para desenvolvimento
+- Serviço de e-mails com **Nodemailer**
+- Processamento de dados com **Multer**
 
 ## Autores
 
