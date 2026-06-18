@@ -4,6 +4,8 @@ import { UsuarioController } from '../controllers/UsuarioController.js';
 
 import autenticar from '../middlewares/auth.js';
 
+import upload from "../config/multer.js";
+
 const router = Router();
 
 const controller = new UsuarioController();
@@ -40,6 +42,12 @@ router.put(
     '/usuarios/:id',
     autenticar,
     controller.atualizar
+);
+
+router.patch(
+    "/usuarios/:id/foto",
+    upload.single("foto"),
+    controller.atualizarFoto
 );
 
 router.delete(
