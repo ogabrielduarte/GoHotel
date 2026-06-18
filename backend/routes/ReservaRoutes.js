@@ -14,6 +14,8 @@ router.get('/reservas/:id', controller.buscarPorId);
 
 router.put('/reservas/:id', controller.atualizar);
 
+router.patch('reservas/:id', controller.mudarData);
+
 router.delete('/reservas/:id', controller.deletar);
 
 // EXPORT

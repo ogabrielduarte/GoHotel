@@ -268,6 +268,12 @@
                     data-id="${reserva.id}">
                     Cancelar Reserva
                 </button>
+
+                <button
+                    class="btn-update"
+                    data-id="${reserva.id}">
+                    Mudar Data
+                </button>
             `;
 
                 container.appendChild(card);
@@ -326,6 +332,65 @@
                                 alert(
                                     erro.message ||
                                     "Erro ao cancelar reserva"
+                                );
+                            }
+                        }
+                    );
+                });
+
+                document
+                .querySelectorAll(".btn-delete")
+                .forEach(button => {
+
+                    button.addEventListener(
+                        "click",
+                        async () => {
+
+                            if (
+                                !confirm(
+                                    "Deseja cancelar esta reserva?"
+                                )
+                            ) {
+                                return;
+                            }
+
+                            try {
+
+                                const response =
+                                    await fetch(
+                                        `http://localhost:3000/reservas/${button.dataset.id}`,
+                                        {
+                                            method: "PATCH",
+                                            headers: {
+                                                Authorization:
+                                                    `Bearer ${token}`
+                                            }
+                                        }
+                                    );
+
+                                const dados =
+                                    await response.json();
+
+                                if (!response.ok) {
+                                    throw new Error(
+                                        dados.erro ||
+                                        "Erro ao mudar data da reserva"
+                                    );
+                                }
+
+                                alert(
+                                    "data mudada com sucesso!"
+                                );
+
+                                listarReservas(container);
+
+                            } catch (erro) {
+
+                                console.error(erro);
+
+                                alert(
+                                    erro.message ||
+                                    "Erro ao mudar data da reserva"
                                 );
                             }
                         }
