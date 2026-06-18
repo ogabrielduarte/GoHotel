@@ -17,12 +17,23 @@ export class Usuario {
         this.setSenha(senha);
         this.setTermos(termos);
         this.setReceberEmails(receberEmails);
-        
+
     }
 
     // GET-SET ID
     getId() {
         return this.#id;
+    }
+
+    static validarNome(nome) {
+        if (!nome) throw new Error('O campo nome não pode estar vazio');
+        if (typeof nome !== 'string') throw new Error('Nome inválido');
+
+        if (nome.trim().split(/\s+/).length < 2) {
+            throw new Error('Informe nome e sobrenome');
+        }
+
+        return nome.toUpperCase();
     }
 
     setId(id) {
@@ -38,22 +49,18 @@ export class Usuario {
         return this.#nome;
     }
 
+    static validarGenero(genero) {
+        if (!genero) throw new Error('O campo gênero é obrigatório');
+        if (typeof genero !== 'string') throw new Error('Gênero inválido');
+
+        const generosValidos = ['masculino', 'feminino', 'nao-binario', 'nao-informar'];
+        if (!generosValidos.includes(genero)) throw new Error('Gênero inválido');
+
+        return genero;
+    }
+
     setNome(nome) {
-        if (!nome) {
-            throw new Error('O campo nome não pode estar vazio');
-        }
-
-        if (typeof nome !== 'string') {
-            throw new Error('Nome inválido');
-        }
-
-        const regexEspaco = /\s+/;
-
-        if (nome.trim().split(regexEspaco).length < 2) {
-            throw new Error('Informe nome e sobrenome');
-        }
-
-        this.#nome = nome.toUpperCase();
+        this.#nome = Usuario.validarNome(nome);
     }
 
     // GET-SET GÊNERO
@@ -62,27 +69,7 @@ export class Usuario {
     }
 
     setGenero(genero) {
-
-        if (!genero) {
-            throw new Error('O campo gênero é obrigatório');
-        }
-
-        if (typeof genero !== 'string') {
-            throw new Error('Gênero inválido');
-        }
-
-        const generosValidos = [
-            'masculino',
-            'feminino',
-            'nao-binario',
-            'nao-informar'
-        ];
-
-        if (!generosValidos.includes(genero)) {
-            throw new Error('Gênero inválido');
-        }
-
-        this.#genero = genero;
+        this.#genero = Usuario.validarGenero(genero);
     }
 
     // GET-SET E-MAIL
@@ -90,22 +77,19 @@ export class Usuario {
         return this.#email;
     }
 
-    setEmail(email) {
-        if (!email) {
-            throw new Error('O campo e-mail não pode estar vazio');
-        }
+     static validarEmail(email) {
+        if (!email) throw new Error('O campo e-mail não pode estar vazio');
+        if (typeof email !== 'string') throw new Error('Email inválido');
 
-        if (typeof email !== 'string') {
-            throw new Error('Email inválido');
-        }
-
-        let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!regexEmail.test(email)) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             throw new Error('O formato do e-mail não é válido');
         }
 
-        this.#email = email;
+        return email;
+    }
+
+    setEmail(email) {
+        this.#email = Usuario.validarEmail(email);
     }
 
     // GET-SET SENHA CRIPTOGRAFADA
@@ -113,22 +97,16 @@ export class Usuario {
         return this.#senha;
     }
 
+    static validarSenha(senha) {
+        if (!senha) throw new Error('O campo senha não pode estar vazio');
+        if (typeof senha !== 'string') throw new Error('Senha inválida');
+        if (senha.length < 8) throw new Error('Senha muito curta');
+
+        return bcrypt.hashSync(senha, 10);
+    }
+
     setSenha(senha) {
-        if (!senha) {
-            throw new Error('O campo senha não pode estar vazio');
-        }
-
-        if (typeof senha !== 'string') {
-            throw new Error('Senha inválida');
-        }
-
-        if (senha.length < 8) {
-            throw new Error('Senha muito curta');
-        }
-
-        let senhaHash = bcrypt.hashSync(senha, 10)
-
-        this.#senha = senhaHash;
+        this.#senha = Usuario.validarSenha(senha);
     }
 
     // GET-SET TERMOS
@@ -143,8 +121,8 @@ export class Usuario {
                 'É obrigatório aceitar o compartilhamento de dados'
             );
         }
-        
-            this.#termos = 1;
+
+        this.#termos = 1;
     }
 
     // GET-SET RECEBER E-MAILS
