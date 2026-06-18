@@ -224,7 +224,8 @@ function abrirModalAtualizar(usuario) {
             );
 
             if (!resposta.ok) {
-                throw new Error();
+                const erroBody = await resposta.json().catch(() => null);
+                throw new Error(erroBody?.erro || `Status ${resposta.status}`)
             }
 
             alert('Usuário atualizado com sucesso!');
@@ -234,11 +235,8 @@ function abrirModalAtualizar(usuario) {
             listarUsuarios();
 
         } catch (erro) {
-
             console.error(erro);
-
-            alert('Erro ao atualizar usuário');
-
+            alert(erro.message || 'Erro ao atualizar usuário');
         }
 
     });
