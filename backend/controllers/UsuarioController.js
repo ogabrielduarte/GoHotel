@@ -7,6 +7,10 @@ import { sendEmail } from "../services/EmailService.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+import { minioClient } from "../services/MinioService.js";
+
+const MINIO_URL = process.env.MINIO_URL || "http://localhost:9000";
+
 export class UsuarioController {
 
     async cadastrar(req, res) {
@@ -36,7 +40,6 @@ export class UsuarioController {
                 receberEmails: usuario.getReceberEmails()
             };
 
-            
 
             if (usuario.getReceberEmails() === 1) {
                 let mail = await criarMensagemBemVindo();
@@ -149,6 +152,10 @@ export class UsuarioController {
                 });
             }
 
+            if (usuario.foto) {
+                usuario.foto = `${MINIO_URL}/usuarios/${usuario.foto}`;
+            }
+
             return res.status(200).json(usuario);
 
         } catch (e) {
@@ -172,13 +179,13 @@ export class UsuarioController {
 
             const reservas = await dao.listarReservas(id);
 
-            if(!reservas || reservas.length === 0) {
+            if (!reservas || reservas.length === 0) {
                 return res.status(400).json({
                     erro: "Não há reservas"
                 });
             }
 
-            res.status(201).json({reservas})
+            res.status(201).json({ reservas })
         } catch (e) {
             return res.status(500).json({
                 erro: e.message || e
@@ -216,7 +223,57 @@ export class UsuarioController {
     }
 
     async atualizarFoto(req, res) {
-        
+        try {
+
+            const id = Number(req.params.id);
+
+            if (!id) {
+                return res.status(404).json({
+                    erro: "ID inválido"
+                });
+            }
+
+            if (!req.file) {
+                return res.status(400).json({
+                    erro: "Nenhuma imagem enviada"
+                });
+            }
+
+            const extensao =
+                req.file.originalname.split(".").pop();
+
+            const nomeArquivo =
+                `usuario-${id}-${Date.now()}.${extensao}`;
+
+            await minioClient.putObject(
+                "usuarios",
+                nomeArquivo,
+                req.file.buffer,
+                req.file.size,
+                {
+                    "Content-Type": req.file.mimetype
+                }
+            );
+
+            const dao = new UsuarioDAO();
+
+            await dao.atualizarFoto(
+                id,
+                nomeArquivo
+            );
+
+            const url = `${MINIO_URL}/usuarios/${nomeArquivo}`;
+
+            return res.status(200).json({
+                mensagem: "Foto atualizada com sucesso",
+                foto: url
+            });
+
+        } catch (e) {
+            return res.status(500).json({
+                erro: e.message || e
+            });
+        }
     }
 
     async deletar(req, res) {
