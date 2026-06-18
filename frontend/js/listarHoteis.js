@@ -72,20 +72,13 @@ perfilPage.addEventListener("click", () => {
     }
 });
 
-redirectReserva.addEventListener("click", () => {
-    if (token) {
-        location.href = '../pages/hoteis.html'
-    } else {
-        alert('Faça o log-in para fazer reservas');
-        window.location.href = '../pages/login.html';
-    }
-});
-
 logoutButton.addEventListener("click", () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('nome');
-    alert('Deslogado com sucesso!');
-    location.href = './index.html';
+    if (confirm('Você quer encerrar a sessão?')) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('nome');
+        alert('Deslogado com sucesso!');
+        location.href = '../index.html';
+    }
 });
 
 setInterval(listarHoteis, 30000);
