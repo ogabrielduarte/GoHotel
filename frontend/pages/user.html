@@ -70,7 +70,7 @@
     const Unome = document.getElementById('Unome');
     const Uicon = document.getElementById('Uicon');
 
-    
+
 
     Unome.innerHTML = `${localStorage.getItem("nome")}`
 
@@ -121,6 +121,39 @@
         };
         leitor.readAsDataURL(arquivo);
     });
+
+    async function carregarPerfil() {
+
+        try {
+
+            const response = await fetch(
+                `http://localhost:3000/usuarios/${localStorage.getItem("id")}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                }
+            );
+
+            const usuario = await response.json();
+
+            console.log(usuario);
+
+            if (usuario.nome) {
+                Unome.innerHTML = usuario.nome;
+            }
+
+            if (usuario.foto) {
+                Uicon.src = usuario.foto;
+            }
+
+        } catch (erro) {
+            console.error("Erro ao carregar perfil:", erro);
+        }
+
+    }
+
+    carregarPerfil();
 
     async function enviarFoto() {
 
