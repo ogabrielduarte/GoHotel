@@ -164,10 +164,10 @@ export class UsuarioDAO {
             db.all(
                 sql,
                 [id],
-                function(err, rows) {
+                function (err, rows) {
                     db.close();
 
-                    if(err) {
+                    if (err) {
                         reject(err);
                         return;
                     }
@@ -218,6 +218,42 @@ export class UsuarioDAO {
                     }
 
                     resolve(this.changes);
+                }
+            );
+
+        });
+
+    }
+    atualizarFoto(id, foto) {
+
+        const db = this.iniciar();
+
+        const sql = `
+        UPDATE usuarios
+        SET foto = ?
+        WHERE id = ?
+    `;
+
+        return new Promise((resolve, reject) => {
+
+            db.run(
+                sql,
+                [foto, id],
+                function (err) {
+
+                    db.close();
+
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+
+                    if (this.changes === 0) {
+                        reject("Usuário não encontrado");
+                        return;
+                    }
+
+                    resolve("Foto atualizada com sucesso");
                 }
             );
 
