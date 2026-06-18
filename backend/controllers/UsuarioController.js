@@ -193,31 +193,33 @@ export class UsuarioController {
     }
 
     async atualizar(req, res) {
+        
         try {
             const id = Number(req.params.id);
             const dados = req.body;
 
             if (!id) {
-                return res.status(400).json({
-                    erro: "ID inválido"
-                });
+                return res.status(400).json({ erro: "ID inválido" });
             }
 
             if (!dados || Object.keys(dados).length === 0) {
-                return res.status(400).json({
-                    erro: "Não há campos para atualizar"
-                });
+                return res.status(400).json({ erro: "Não há campos para atualizar" });
             }
 
+            const camposValidados = {};
+
+            if ('nome' in dados) camposValidados.nome = Usuario.validarNome(dados.nome);
+            if ('genero' in dados) camposValidados.genero = Usuario.validarGenero(dados.genero);
+            if ('email' in dados) camposValidados.email = Usuario.validarEmail(dados.email);
+            if ('senha' in dados) camposValidados.senha = Usuario.validarSenha(dados.senha);
+
             const dao = new UsuarioDAO();
-            const update = await dao.atualizar(dados, id);
+            const update = await dao.atualizar(camposValidados, id);
 
             return res.status(200).json(update);
 
         } catch (e) {
-            return res.status(500).json({
-                erro: e.message || e
-            });
+            return res.status(400).json({ erro: e.message || e });
         }
     }
 
