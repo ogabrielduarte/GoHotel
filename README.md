@@ -2,7 +2,7 @@
 
 ~ _Visite o site da GoHotel [clicando aqui :D](https://go-hotel.vercel.app)_ ~
 
-Este é um projeto acadêmico proposto como integração das disciplinas do
+Este é um projeto acadêmico proposto pela integração das disciplinas do
 curso técnico de Desenvolvimento de Sistemas do IFAL, com o objetivo de aplicar
 os conhecimentos adquiridos durante o curso na construção de um sistema utilizável.
 
